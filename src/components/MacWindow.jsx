@@ -1,4 +1,5 @@
 import React from 'react';
+import Chatbox from './Chatbox';
 import styled from 'styled-components';
 
 export default function MacWindow() {
@@ -6,12 +7,13 @@ export default function MacWindow() {
 		<Window>
 			<WindowHeader>
 				<TrafficLights>
-                    <div className='red'></div>
-                    <div className='yellow'></div>
-                    <div className='green'></div>
-                </TrafficLights>
+					<div className="red" />
+					<div className="yellow" />
+					<div className="green" />
+				</TrafficLights>
 				<span>Artem Gusev - Job Candidate</span>
 			</WindowHeader>
+            <Chatbox />
 		</Window>
 	);
 }
@@ -55,4 +57,46 @@ const WindowHeader = styled.div`
 	}
 `;
 
-const TrafficLights = styled.div``;
+const TrafficLights = styled.div`
+	.red {
+		box-sizing: border-box;
+
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		left: 8px;
+		top: 8px;
+
+		background: #ec6a5e;
+		border: 0.5px solid rgba(0, 0, 0, 0.12);
+		border-radius: 50%;
+	}
+
+	.yellow {
+		box-sizing: border-box;
+
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		left: 28px;
+		top: 8px;
+
+		background: #f5bf4f;
+		border: 0.5px solid rgba(0, 0, 0, 0.12);
+		border-radius: 50%;
+	}
+
+	.green {
+		box-sizing: border-box;
+
+		position: absolute;
+		width: 12px;
+		height: 12px;
+		left: 48px;
+		top: 8px;
+
+		background: #61c554;
+		border: 0.5px solid rgba(0, 0, 0, 0.12);
+        border-radius: 50%;
+	}
+`;

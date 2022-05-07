@@ -1,6 +1,7 @@
 import React from 'react';
 import Hello from './Hello';
 import scrollDown from '../images/scrollDown.svg';
+import stars from '../images/stars.jpg';
 import styled from 'styled-components';
 
 export default function HelloHolder() {
@@ -25,7 +26,10 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(35.36deg, #000000 46.6%, #b07501 100%);
+	background-image:radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.85) 100%), url(${stars});
+  background-size: cover;
+	background-position-x: center;
+  background-position-y: center;
 	width: 100%;
 	height: 100vh;
 `;
