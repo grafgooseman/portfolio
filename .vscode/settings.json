@@ -1,0 +1,11 @@
+{
+    "files.autoSave": "onFocusChange",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+      },
+      "emmet.triggerExpansionOnTab": true,
+      "[css]": {"editor.suggest.showProperties": false},
+"[less]": {"editor.suggest.showProperties": false},
+"[sass]": {"editor.suggest.showProperties": false},
+"[scss]": {"editor.suggest.showProperties": false}
+}
