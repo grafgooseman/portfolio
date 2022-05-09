@@ -8,7 +8,7 @@ export default function Hello() {
 			<HelloTextHolder>
 				<h1>Hello</h1>
 				<h3>My name is Artem Gusev</h3>
-				<p>I am a student with computer science pashion</p>
+				<p>I am a student with a computer science pashion</p>
 			</HelloTextHolder>
 			<LaptopHolder>
 				<Laptop src={laptopImg} alt="laptop" />
@@ -51,6 +51,7 @@ const HelloTextHolder = styled.div`
 
 	p {
 		/* font-weight: 400; */
+		font-size: 0.7rem;
 	}
 `;
 

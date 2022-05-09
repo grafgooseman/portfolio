@@ -13,7 +13,7 @@ export default function MacWindow() {
 				</TrafficLights>
 				<span>Artem Gusev - Job Candidate</span>
 			</WindowHeader>
-            <Chatbox />
+			<Chatbox />
 		</Window>
 	);
 }
@@ -41,19 +41,23 @@ const WindowHeader = styled.div`
 	justify-content: center;
 
 	span {
-		font-family: 'Inter';
-		font-style: normal;
-		font-weight: 700;
-		font-size: 13px;
-		line-height: 16px;
-		/* identical to box height */
+		display: none;
+		@media (min-width: 900px) {
+			display: flex;
+			font-family: 'Inter';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 13px;
+			line-height: 16px;
+			/* identical to box height */
 
-		display: flex;
-		align-items: center;
-		text-align: center;
-		letter-spacing: -0.004em;
+			display: flex;
+			align-items: center;
+			text-align: center;
+			letter-spacing: -0.004em;
 
-		color: #3d3d3d;
+			color: #3d3d3d;
+		}
 	}
 `;
 
@@ -97,6 +101,6 @@ const TrafficLights = styled.div`
 
 		background: #61c554;
 		border: 0.5px solid rgba(0, 0, 0, 0.12);
-        border-radius: 50%;
+		border-radius: 50%;
 	}
 `;

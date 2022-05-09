@@ -1,0 +1,57 @@
+.typing-indicator {
+    $ti-size-mult: 0.6;
+    $ti-color-bg: #E6E7ED;
+    background-color: $ti-color-bg;
+    will-change: transform;
+    width: auto;
+    border-radius: 50px;
+    padding: calc(20px * $ti-size-mult);
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    animation: 2s bulge infinite ease-out;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: calc(-2px * $ti-size-mult);
+      left: calc(-2px * $ti-size-mult);
+      height: calc(20px * $ti-size-mult);
+      width: calc(20px * $ti-size-mult);
+      border-radius: 50%;
+      background-color: $ti-color-bg;
+    }
+    &::after {
+      height: calc(10px * $ti-size-mult);
+      width: calc(10px * $ti-size-mult);
+      left: calc(-10px * $ti-size-mult);
+      bottom: calc(-10px * $ti-size-mult);
+    }
+    span {
+      height: calc(15px * $ti-size-mult);
+      width: calc(15px * $ti-size-mult);
+      float: left;
+      margin: 0 calc(1px * $ti-size-mult);
+      background-color: #9E9EA1;
+      display: block;
+      border-radius: 50%;
+      opacity: 0.4;
+      @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) {
+          animation: 1s blink infinite ($i * .3333s);
+        }
+      }
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bulge {
+    50% {
+      transform: scale(1.05);
+    }
+  }
