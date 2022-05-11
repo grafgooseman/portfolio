@@ -9,7 +9,7 @@ export default function HelloHolder() {
 		<Wrapper>
 			<Hello />
 			<ScrollToChat>
-				<span>Scroll down to chat</span>
+				<a href='#chatHolder'>Scroll down to chat</a>
 				<img src={scrollDown} alt="scrollDown small logo" />
 			</ScrollToChat>
 		</Wrapper>
@@ -45,4 +45,14 @@ const ScrollToChat = styled.div`
 		margin-left: 10px;
 		margin-right: 10px;
 	}
+
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	a:hover{
+		text-decoration: underline;
+		text-underline-offset: 5px;
+	}
+	
 `;

@@ -3,5 +3,8 @@ body {
     margin: 0px;
     height: 100%;
     scroll-snap-type: y mandatory;
+}
 
+html {
+    scroll-behavior: smooth;
 }

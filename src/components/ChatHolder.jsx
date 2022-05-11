@@ -4,7 +4,7 @@ import MacWindow from './MacWindow';
 
 export default function ChatHolder() {
 	return (
-		<Background>
+		<Background id='chatHolder'>
 			<MacWindow />
 		</Background>
 	);

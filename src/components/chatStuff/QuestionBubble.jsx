@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import questionBubbleTail from '../../images/questionBubbleTail.svg';
 
-export default function QuestionBubble({ textArray }) {
+export default function QuestionBubble({ textArray , paddingArray}) {
 	return (
 		<Wrapper>
-			<Bubble>
+			<Bubble pa={[paddingArray[0], paddingArray[1]]}>
                 {textArray.map((text, index) => (
                     <p key={index}>{text}</p>
                 ))}
@@ -35,7 +35,7 @@ const Bubble = styled.div`
 	/* display: flex;
 	flex-direction: row;
 	align-items: center; */
-	padding: 7px 12px;
+	padding: ${props => props.pa[0]}px ${props => props.pa[1]}px;
 
 	background: #0078ff;
 	border-radius: 20px;

@@ -26,8 +26,13 @@ const Window = styled.div`
 	background: #ffffff;
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
 
-	width: 70%;
-	height: 70vh;
+	width: 97%;
+	height: 97%;
+	@media (min-width: 450px) {
+		width: 70%;
+		height: 70vh;
+	}
+
 `;
 
 const WindowHeader = styled.div`

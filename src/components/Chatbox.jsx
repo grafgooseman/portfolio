@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import BubbleTypingAnimation from './chatStuff/TypingAnimationBubble';
+// import BubbleTypingAnimation from './chatStuff/TypingAnimationBubble';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 
 export default function Chatbox() {
 	return (
 		<Wrapper>
-			<QuestionBubble textArray={[
-                "Hello Artem, I heard that you are looking for a coop placement a fall semester.",
+			<QuestionBubble paddingArray={[11, 15]} textArray={[
+                "Hello Artem, I heard that you are looking for a coop placement for a fall semester.",
                 "Could you please tell me a little bit about yourself?"
             ]}/>
-			<ReplyBubble text="Hello, how are you?" />
-            <QuestionBubble textArray={[
-                "Hello Artem."
-            ]}/>
+			<ReplyBubble paddingArray={[11, 15]} textArray={[
+                "Hello Artem, I heard that you are looking for a coop placement for a fall semester.",
+                "Could you please tell me a little bit about yourself?"
+            ]} />
 		</Wrapper>
 	);
 }
