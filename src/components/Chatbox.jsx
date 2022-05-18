@@ -12,8 +12,7 @@ export default function Chatbox() {
                 "Could you please tell me a little bit about yourself?"
             ]}/>
 			<ReplyBubble paddingArray={[11, 15]} textArray={[
-                "Hello Artem, I heard that you are looking for a coop placement for a fall semester.",
-                "Could you please tell me a little bit about yourself?"
+                "Yes, abso"
             ]} />
 		</Wrapper>
 	);
