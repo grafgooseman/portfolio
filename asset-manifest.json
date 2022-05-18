@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/portfolio/static/js/main.120d9105.js",
+    "static/media/stars.jpg": "/portfolio/static/media/stars.38d83403de2cfc30feac.jpg",
+    "static/media/laptop.png": "/portfolio/static/media/laptop.db5b2bebc762b2bbbae5.png",
+    "index.html": "/portfolio/index.html",
+    "static/media/replyBubbleTail.svg": "/portfolio/static/media/replyBubbleTail.876e3b5a4a7db33d9d1543dc730b113e.svg",
+    "static/media/questionBubbleTail.svg": "/portfolio/static/media/questionBubbleTail.32ec199b7578489bda925ebce8d9150b.svg",
+    "static/media/scrollDown.svg": "/portfolio/static/media/scrollDown.e9bbe7d7f0f29441edd90efd9f8f0a7d.svg",
+    "main.120d9105.js.map": "/portfolio/static/js/main.120d9105.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.120d9105.js"
+  ]
+}
