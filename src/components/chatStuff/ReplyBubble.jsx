@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import replyBubbleTail from '../../images/replyBubbleTail.svg';
+import DOMPurify from 'dompurify'
 
-export default function ReplyBubble({ textArray, paddingArray }) {
+export default function ReplyBubble({ text, paddingArray }) {
 	return (
 		<Wrapper>
 			<Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
-				{textArray.map((text, index) => <p key={index}>{text}</p>)}
+				<div className="content" dangerouslySetInnerHTML={{__html: text}}></div>
 				<img src={replyBubbleTail} alt="" />
 			</Bubble>
+			{/* <Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
+				{textArray.map((text, index) => <p key={index}>{text}</p>)}
+				<img src={replyBubbleTail} alt="" />
+			</Bubble> */}
 		</Wrapper>
 	);
 }
@@ -21,7 +26,7 @@ const Wrapper = styled.div`
 `;
 
 const Bubble = styled.div`
-	margin: 10px;
+	margin: 1px 10px 1px 10px;
 	max-width: 400px;
 
 	font-family: 'Inter';

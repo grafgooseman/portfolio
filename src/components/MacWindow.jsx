@@ -20,6 +20,7 @@ export default function MacWindow() {
 
 //Styles
 const Window = styled.div`
+	font-size: 0.8rem;
 	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5), inset 0px 0.5px 1px #ffffff;
 	filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.15)) drop-shadow(0px 25px 30px rgba(0, 0, 0, 0.35));
 	border-radius: 10px;
@@ -28,7 +29,9 @@ const Window = styled.div`
 
 	width: 97%;
 	height: 97%;
-	@media (min-width: 450px) {
+	@media (min-width: 800px) {
+		font-size: 1rem;
+		max-width: 780px;
 		width: 70%;
 		height: 70vh;
 	}
