@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import replyBubbleTail from '../../images/replyBubbleTail.svg';
-import DOMPurify from 'dompurify'
+// import DOMPurify from 'dompurify'
 
 export default function ReplyBubble({ text, paddingArray }) {
+	//DOMPurify.sanitize temporary turned off due to interferance with target="_blank"
+	//Its ok cause no user input
 	return (
 		<Wrapper>
 			<Bubble pa={[ paddingArray[0], paddingArray[1] ]}>

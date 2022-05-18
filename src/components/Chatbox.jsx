@@ -58,7 +58,7 @@ export default function Chatbox() {
 				paddingArray={paddingArray}
 				text={"I had an internship at <a rel=\"noopener noreferrer\" target='_blank' href='https://cmd-root.com/'>:Root</a> where I did " + 
 				"a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>" +
-				"Extention was an instant success and the company's sales skyrocketed that month."}
+				"Extention was an instant success and the company's sales skyrocketed that month 🚀"}
 			/>
 			<ReplyBubble
 				paddingArray={paddingArray}
