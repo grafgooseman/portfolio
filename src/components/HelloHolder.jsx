@@ -27,9 +27,9 @@ const Wrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	background-image:radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.85) 100%), url(${stars});
-  background-size: cover;
+  	background-size: cover;
 	background-position-x: center;
-  background-position-y: center;
+  	background-position-y: center;
 	width: 100%;
 	height: 100vh;
 `;
