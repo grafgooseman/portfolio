@@ -6,10 +6,10 @@ import styled from 'styled-components';
 
 export default function HelloHolder() {
 	return (
-		<Wrapper>
+		<Wrapper id="top">
 			<Hello />
 			<ScrollToChat>
-				<a href='#chatHolder'>Scroll down to chat</a>
+				<a href='#chat'>Scroll down to chat</a>
 				<img src={scrollDown} alt="scrollDown small logo" />
 			</ScrollToChat>
 		</Wrapper>

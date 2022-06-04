@@ -20,6 +20,8 @@ export default function ReplyBubble({ text, paddingArray }) {
 	);
 }
 
+const PADDING_BREAKPOINT = '632px';
+
 const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -29,7 +31,10 @@ const Wrapper = styled.div`
 
 const Bubble = styled.div`
 	margin: 1px 10px 1px 10px;
-	max-width: 400px;
+	max-width: 200px;
+	@media (min-width: ${PADDING_BREAKPOINT}) {
+		max-width: 400px;
+	}
 
 	font-family: 'Inter';
 	font-weight: 400;

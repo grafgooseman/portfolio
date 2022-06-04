@@ -7,9 +7,11 @@ export default function MacWindow() {
 		<Window>
 			<WindowHeader>
 				<TrafficLights>
-					<div className="red" />
-					<div className="yellow" />
-					<div className="green" />
+					<a href="#top">
+						<div className="red" />
+						<div className="yellow" />
+						<div className="green" />
+					</a>
 				</TrafficLights>
 				<span>Artem Gusev - Job Candidate</span>
 			</WindowHeader>
@@ -35,7 +37,6 @@ const Window = styled.div`
 		width: 70%;
 		height: 70vh;
 	}
-
 `;
 
 const WindowHeader = styled.div`

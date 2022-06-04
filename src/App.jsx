@@ -4,8 +4,8 @@ import ChatHolder from './components/ChatHolder';
 function App() {
     return (
         <>
-            <HelloHolder />
-            <ChatHolder />
+            <HelloHolder/>
+            <ChatHolder/>
         </>
     );
 }
