@@ -3,6 +3,7 @@ body {
     margin: 0px;
     height: 100%;
     scroll-snap-type: y mandatory;
+    overflow:auto;
 }
 
 html {
