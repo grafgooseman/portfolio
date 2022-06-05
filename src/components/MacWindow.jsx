@@ -9,9 +9,9 @@ export default function MacWindow() {
 				<TrafficLights>
 					<a href="#top">
 						<div className="red" />
-						<div className="yellow" />
-						<div className="green" />
 					</a>
+					<div className="yellow" />
+					<div className="green" />
 				</TrafficLights>
 				<span>Artem Gusev - Job Candidate</span>
 			</WindowHeader>
@@ -19,6 +19,9 @@ export default function MacWindow() {
 		</Window>
 	);
 }
+
+
+
 
 //Styles
 const Window = styled.div`
