@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 
 const ScrollToChat = styled.div`
 	color: white;
-	position: absolute;
+	position: fixed;
 	top: 13px;
 	right: 20px;
 
