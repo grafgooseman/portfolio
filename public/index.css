@@ -7,4 +7,5 @@ body {
 
 html{
     scroll-snap-type: y mandatory;
+    font-family: 'M PLUS 1', sans-serif;
 }

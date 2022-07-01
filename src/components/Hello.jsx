@@ -56,6 +56,7 @@ const HelloTextHolder = styled.div`
 	h3 {
 		margin-top: 0;
 		margin-bottom: 0px;
+		font-size: 1.3rem;
 		@media (min-width: ${breakpointWrap}) {
 			margin-bottom: 5px;
 		}
@@ -65,7 +66,7 @@ const HelloTextHolder = styled.div`
 
 	p {
 		/* font-weight: 400; */
-		font-size: 0.7rem;
+		font-size: 0.9rem;
 	}
 `;
 
