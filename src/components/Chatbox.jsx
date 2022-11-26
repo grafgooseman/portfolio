@@ -16,7 +16,7 @@ export default function Chatbox() {
 		<Wrapper>
 			<QuestionBubble
 				paddingArray={paddingArray}
-				text={'Hello Artem, I heard that you are looking for a coop placement for the fall semester.'}
+				text={'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?'}
 			/>
 			<QuestionBubble
 				paddingArray={paddingArray}
