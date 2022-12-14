@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import replyBubbleTail from '../../images/replyBubbleTail.svg';
-// import DOMPurify from 'dompurify'
+import DOMPurify from 'dompurify';
 
 export default function ReplyBubble({ text, paddingArray }) {
-	//DOMPurify.sanitize temporary turned off due to interferance with target="_blank"
-	//Its ok cause no user input
+	//DOMPurify.sanitize sanitises out target="_blank"
+	//Not good
+
+	//Add logic here to add to all links target="_blank" post sanitization
+
 	return (
 		<Wrapper>
 			<Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
-				<div className="content" dangerouslySetInnerHTML={{__html: text}}></div>
+				<div className="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }} />
 				<img src={replyBubbleTail} alt="" />
 			</Bubble>
 			{/* <Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
@@ -40,7 +43,7 @@ const Bubble = styled.div`
 	font-weight: 400;
 	position: relative;
 
-	padding: ${props => props.pa[0]}px ${props => props.pa[1]}px;
+	padding: ${(props) => props.pa[0]}px ${(props) => props.pa[1]}px;
 
 	background: #e9e9eb;
 	border-radius: 20px;
@@ -53,7 +56,7 @@ const Bubble = styled.div`
 		bottom: -1px;
 	}
 
-  p {
-        margin: 0;
-    }
+	p {
+		margin: 0;
+	}
 `;
