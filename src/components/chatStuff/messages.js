@@ -42,7 +42,7 @@ const messageArray = [
     {
         type: 'reply',
         text:
-            "I had an internship at <a rel=\"noopener noreferrer\" target='_blank' href='https://cmd-root.com/'>:Root</a> where I did " +
+            "I had an internship at :Root where I did " +
             'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
             "Extention was an instant success and the company's sales skyrocketed that month 🚀",
     },
@@ -112,7 +112,7 @@ const messageArray = [
     },
     {
         type: 'reply',
-        text: '<a href=\'https://github.com/grafgooseman\' rel="noopener noreferrer" target="_blank">here</a> 🐈'
+        text: 'And my GitHub that I regularly push to is <a href=\'https://github.com/grafgooseman\' rel="noopener noreferrer" target="_blank">here</a> 🐈'
     },
     {
         type: 'question',

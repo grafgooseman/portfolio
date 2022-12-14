@@ -12,12 +12,10 @@ export default function ReplyBubble({ text, paddingArray }) {
 
 	//Returns target _blank to links after sterialization
 	useEffect(() => {
-
 		setTimeout(() => {
 			setRenderTypingAnimation(false);
+			addTargetBlankBack();
 		}, typingAnimationLength);
-
-		addTargetBlankBack();
 	}, []);
 
 

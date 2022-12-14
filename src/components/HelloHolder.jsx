@@ -29,7 +29,7 @@ export default function HelloHolder() {
 			</div>
 
 			<ScrollToChat>
-				<a id="scrollToChatLink" href="#chat" onClick={onScrollDownLinkClick}>
+				<a id="scrollToChatLink" href="#chat">
 					Scroll down to chat
 				</a>
 				<img src={scrollDown} alt="scrollDown small logo" />

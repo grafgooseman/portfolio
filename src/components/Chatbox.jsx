@@ -13,38 +13,18 @@ export default function Chatbox() {
 
 	//Renderer from the "messages.js" file
 	for (let i = 0; i < messageArray.length; i++) {
-
-		if(messageArray[i].type !== previousType) {
-			returnArray.push(
-				<Spacer></Spacer>
-			);
+		if (messageArray[i].type !== previousType) {
+			returnArray.push(<Spacer key={i + 's'} />);
 		}
 		if (messageArray[i].type === 'reply') {
-			returnArray.push(
-				<ReplyBubble
-					key={i}
-					paddingArray={paddingArray}
-					text={messageArray[i].text}
-				/>
-			);
+			returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messageArray[i].text} />);
 			previousType = 'reply';
 		} else if (messageArray[i].type === 'question') {
-			returnArray.push(
-				<QuestionBubble
-					key={i}
-					paddingArray={paddingArray}
-					text={messageArray[i].text}
-				/>
-			);
+			returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messageArray[i].text} />);
 			previousType = 'question';
 		}
 	}
-	return (
-		<Wrapper>
-			{returnArray}
-		</Wrapper>
-	);
-	
+	return <Wrapper>{returnArray}</Wrapper>;
 }
 
 //Styles
@@ -78,6 +58,7 @@ const Wrapper = styled.div`
 				addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ])
 			)}
 	);
+
 	@media (min-width: ${PADDING_BREAKPOINT}) {
 		padding: ${intToStringWithPx(CHAT_PADDING)};
 		width: calc(100% - ${intToStringWithPx(CHAT_PADDING) * 2});
