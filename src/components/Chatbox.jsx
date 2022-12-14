@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import BubbleTypingAnimation from './chatStuff/TypingAnimationBubble';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import messageArray from './chatStuff/messages';

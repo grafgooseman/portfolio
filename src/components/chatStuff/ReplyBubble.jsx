@@ -1,16 +1,27 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import replyBubbleTail from '../../images/replyBubbleTail.svg';
+import TypingAnimationBubble from './TypingAnimationBubble';
 import DOMPurify from 'dompurify';
 
 export default function ReplyBubble({ text, paddingArray }) {
-	//DOMPurify.sanitize sanitises out target="_blank"
-	//Not good
+	
+	const typingAnimationLength = 2000;
 
-	//Add logic here to add to all links target="_blank" post sanitization
+
+	//Returns target _blank to links after sterialization
+	useEffect(() => {
+		const links = document.querySelectorAll('.content a');
+		links.forEach((link) => {
+			link.setAttribute('target', '_blank');
+		});
+	}, []);
+
 
 	return (
 		<Wrapper>
+			<TypingAnimationBubble/>
 			<Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
 				<div className="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }} />
 				<img src={replyBubbleTail} alt="" />
