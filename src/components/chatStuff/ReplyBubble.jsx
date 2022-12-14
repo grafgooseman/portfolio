@@ -7,31 +7,43 @@ import DOMPurify from 'dompurify';
 
 export default function ReplyBubble({ text, paddingArray }) {
 	
-	const typingAnimationLength = 2000;
-
+	const typingAnimationLength = 2500;
+	const [renderTypingAnimation, setRenderTypingAnimation] = React.useState(true);
 
 	//Returns target _blank to links after sterialization
 	useEffect(() => {
-		const links = document.querySelectorAll('.content a');
-		links.forEach((link) => {
-			link.setAttribute('target', '_blank');
-		});
+
+		setTimeout(() => {
+			setRenderTypingAnimation(false);
+		}, typingAnimationLength);
+
+		addTargetBlankBack();
 	}, []);
 
 
-	return (
-		<Wrapper>
-			<TypingAnimationBubble/>
-			<Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
-				<div className="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }} />
-				<img src={replyBubbleTail} alt="" />
-			</Bubble>
-			{/* <Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
-				{textArray.map((text, index) => <p key={index}>{text}</p>)}
-				<img src={replyBubbleTail} alt="" />
-			</Bubble> */}
-		</Wrapper>
-	);
+	if(renderTypingAnimation){
+		return (
+			<Wrapper>
+				<TypingAnimationBubble/>
+			</Wrapper>
+		);
+	} else {
+		return (
+			<Wrapper>
+				<Bubble pa={[ paddingArray[0], paddingArray[1] ]}>
+					<div className="content" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }} />
+					<img src={replyBubbleTail} alt="" />
+				</Bubble>
+			</Wrapper>
+		);
+	}
+}
+
+function addTargetBlankBack() {
+	const links = document.querySelectorAll('.content a');
+	links.forEach((link) => {
+		link.setAttribute('target', '_blank');
+	});
 }
 
 const PADDING_BREAKPOINT = '632px';
