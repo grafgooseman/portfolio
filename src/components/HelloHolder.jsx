@@ -5,11 +5,18 @@ import ScrollDownArrow from './ScrollDownArrow';
 import stars from '../images/stars.jpg';
 import styled from 'styled-components';
 
-
-function onScrolDownClick() {
-	document.querySelector("#chat").scrollIntoView();
+function onScrollDownArrowClick() {
+	document.querySelector('#chat').scrollIntoView();
 }
-
+function onScrollDownLinkClick() {
+	var el = this;
+	var par = el.parentNode;
+	var next = el.nextSibling;
+	par.removeChild(el);
+	setTimeout(function() {
+		par.insertBefore(el, next);
+	}, 0);
+}
 
 export default function HelloHolder() {
 	return (
@@ -17,12 +24,14 @@ export default function HelloHolder() {
 			<div id="hello">
 				<Hello />
 			</div>
-			<div id="scrollDown" onClick={onScrolDownClick}>
+			<div id="scrollDown" onClick={onScrollDownArrowClick}>
 				<ScrollDownArrow />
 			</div>
 
 			<ScrollToChat>
-				<a href="#chat">Scroll down to chat</a>
+				<a id="scrollToChatLink" href="#chat" onClick={onScrollDownLinkClick}>
+					Scroll down to chat
+				</a>
 				<img src={scrollDown} alt="scrollDown small logo" />
 			</ScrollToChat>
 		</Wrapper>
@@ -45,7 +54,7 @@ const Wrapper = styled.div`
 	#hello {
 		grid-area: hello;
 	}
-	#scrollDown{
+	#scrollDown {
 		grid-area: scrollDown;
 		align-self: center;
 		justify-self: center;
@@ -89,6 +98,13 @@ const ScrollToChat = styled.div`
 		:hover:before {
 			visibility: visible;
 			width: 80%;
+		}
+
+		//Hide the hover effect on touch devices - temperary solution
+		@media (hover: none) {
+			:before{
+				display: none;
+			}
 		}
 	}
 `;

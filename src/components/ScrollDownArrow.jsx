@@ -22,27 +22,30 @@ export default function ScrollDownArrow() {
 
 const Wrapper = styled.div`
 	/* Arrow & Hover Animation */
-    .content{
-        height: 100%;
-        display: grid;
-        place-items: center;
-    }
+	.content {
+		height: 100%;
+		display: grid;
+		place-items: center;
+	}
 
 	#more-arrows {
 		width: 75px;
 		height: 65px;
 
-		&:hover {
-			polygon {
-				fill: #fff;
-				transition: all .2s ease-out;
+		//temprary hover effect for phones removed
+		@media (hover: hover) {
+			&:hover {
+				polygon {
+					fill: #fff;
+					transition: all .2s ease-out;
 
-				&.arrow-bottom {
-					transform: translateY(-18px);
-				}
+					&.arrow-bottom {
+						transform: translateY(-18px);
+					}
 
-				&.arrow-top {
-					transform: translateY(18px);
+					&.arrow-top {
+						transform: translateY(18px);
+					}
 				}
 			}
 		}
