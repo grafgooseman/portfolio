@@ -8,7 +8,6 @@ export default function Chatbox() {
 	const paddingArray = [ 13, 16 ];
 
 	let returnArray = [];
-
 	let previousType = 'question';
 
 	//Renderer from the "messages.js" file
@@ -24,7 +23,11 @@ export default function Chatbox() {
 			previousType = 'question';
 		}
 	}
-	return <Wrapper>{returnArray}</Wrapper>;
+	return (
+		<Wrapper>
+			{returnArray}
+		</Wrapper>
+	);
 }
 
 //Styles

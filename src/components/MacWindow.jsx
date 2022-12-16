@@ -1,6 +1,7 @@
 import React from 'react';
 import Chatbox from './Chatbox';
 import styled from 'styled-components';
+import QuestionsPanel from './chatStuff/QuestionsPanel';
 
 export default function MacWindow() {
 	return (
@@ -16,6 +17,7 @@ export default function MacWindow() {
 				<span>Artem Gusev - Job Candidate</span>
 			</WindowHeader>
 			<Chatbox />
+			<QuestionsPanel />
 		</Window>
 	);
 }
