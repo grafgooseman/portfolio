@@ -49,10 +49,10 @@ const messageArray = [
     {
         type: 'reply',
         text:
-            'Also I had a coop placement at <a rel="noopener noreferrer" target="_blank" href=\'https://www.sirtcentre.com/\'>SIRT</a> where I and a small team ' +
-            'together maintained and expanded a complex VR meeting app for <a href=\'https://www.bell.ca/\' rel="noopener noreferrer" target="_blank">Bell Canada</a><br><br>' +
+            'Also I had a coop placement at <a   href=\'https://www.sirtcentre.com/\'>SIRT</a> where I and a small team ' +
+            'together maintained and expanded a complex VR meeting app for <a href=\'https://www.bell.ca/\'  >Bell Canada</a><br><br>' +
             'In addition, during the same coop, I created a web scraper to investigate the feasibility ' +
-            'of a new Image to Website AI model for <a href=\'https://www.designware.io/\' rel="noopener noreferrer" target="_blank">Designware</a> 🤖',
+            'of a new Image to Website AI model for <a href=\'https://www.designware.io/\'  >Designware</a> 🤖',
     },
     {
         type: 'reply',
@@ -70,25 +70,25 @@ const messageArray = [
         type: 'reply',
         text:
             'Yes, recently, as a challenge from Shopify, I made a ' +
-            '🌟<a href=\'https://shopify-front-challenge.pages.dev/\' rel="noopener noreferrer" target="_blank">website</a> ' +
+            '🌟<a href=\'https://shopify-front-challenge.pages.dev/\'  >website</a> ' +
             'where users can ask any question to different AI engines from ' +
-            '<a href=\'https://openai.com/about/\' rel="noopener noreferrer" target="_blank">OpenAI</a> <br><br>' +
+            '<a href=\'https://openai.com/about/\'  >OpenAI</a> <br><br>' +
             'Website build on React and utilises async requests to interact with ' +
-            '<a href=\'https://openai.com/api/\' rel="noopener noreferrer" target="_blank">OpenAI API</a>'
+            '<a href=\'https://openai.com/api/\'  >OpenAI API</a>'
     },
     {
         type: 'reply',
         text:
             'Also, I made and ' +
-            '🕹️ <a href=\'https://play.google.com/store/apps/details?id=com.PotatoJuice.GunnyGranny&hl=en&gl=US\' rel="noopener noreferrer" target="_blank">published</a>' +
+            '🕹️ <a href=\'https://play.google.com/store/apps/details?id=com.PotatoJuice.GunnyGranny&hl=en&gl=US\'  >published</a>' +
             ' my own mobile game using the Unity game engine and C#'
     },
     {
         type: 'reply',
         text:
             'Participated in Game James the most recent one is the 2021 ' +
-            '<a href=\'https://itch.io/jam/gmtk-2021\' rel="noopener noreferrer" target="_blank">Game Makers Toolkit</a><br><br>' +
-            'Playable in the Browser with this <a href=\'https://grafgooseman.itch.io/no-control\' rel="noopener noreferrer" target="_blank">link</a>✨'
+            '<a href=\'https://itch.io/jam/gmtk-2021\'  >Game Makers Toolkit</a><br><br>' +
+            'Playable in the Browser with this <a href=\'https://grafgooseman.itch.io/no-control\'  >link</a>✨'
     },
     {
         type: 'reply',
@@ -98,12 +98,12 @@ const messageArray = [
     {
         type: 'reply',
         text:
-            '🎥 <a href=\'https://grafgooseman.github.io/vankellyWebsite/index.html\' rel="noopener noreferrer" target="_blank">Film Director Portfolio</a>'
+            '🎥 <a href=\'https://grafgooseman.github.io/vankellyWebsite/index.html\'  >Film Director Portfolio</a>'
     },
     {
         type: 'reply',
         text:
-            '🚁 <a href=\'https://grafgooseman.github.io/west-wind-drone-website/\' rel="noopener noreferrer" target="_blank">Drone Filming Landing Page</a>'
+            '🚁 <a href=\'https://grafgooseman.github.io/west-wind-drone-website/\'  >Drone Filming Landing Page</a>'
     },
     {
         type: 'reply',
@@ -112,7 +112,7 @@ const messageArray = [
     },
     {
         type: 'reply',
-        text: 'And my GitHub that I regularly push to is <a href=\'https://github.com/grafgooseman\' rel="noopener noreferrer" target="_blank">here</a> 🐈'
+        text: 'And my GitHub that I regularly push to is <a href=\'https://github.com/grafgooseman\'  >here</a> 🐈'
     },
     {
         type: 'question',
@@ -126,15 +126,15 @@ const messageArray = [
         type: 'reply',
         text:
             'Sure, here is my ' +
-            '<a href=\'https://www.linkedin.com/in/gusev-artem/\' rel="noopener noreferrer" target="_blank">LinkedIn</a>, ' +
+            '<a href=\'https://www.linkedin.com/in/gusev-artem/\'>LinkedIn</a>, ' +
             ' in addition I can be reached via emal: <br>' +
-            '<a href=\'mailto:gusev@sheridancollege.ca\' rel="noopener noreferrer" target="_blank">gusev@sheridancollege.ca</a>'
+            '<a href=\'mailto:gusev@sheridancollege.ca\'>gusev@sheridancollege.ca</a>'
     },
     {
         type: 'reply',
         text:
             'And this is my general ' +
-            '<a href=\'https://docs.google.com/document/d/1s42rtLqTcQHcgdMoueHmS7KIjvMR01FV/edit?usp=sharing&ouid=100985831291466163407&rtpof=true&sd=true\' rel="noopener noreferrer" target="_blank">Resume</a>'
+            '<a href=\'https://docs.google.com/document/d/1s42rtLqTcQHcgdMoueHmS7KIjvMR01FV/edit?usp=sharing&ouid=100985831291466163407&rtpof=true&sd=true\'  >Resume</a>'
     },
     {
         type: 'question',
@@ -150,13 +150,12 @@ const messageArray = [
     },
 ];
 
-
-// 	<QuestionBubble paddingArray={paddingArray} text={'Ok, thank you Artem'} />
-// 	<Spacer />
-
-// 	<ReplyBubble paddingArray={paddingArray} text={'Thank you too'} />
-// 	<ReplyBubble paddingArray={paddingArray} text={'Have a great rest of your day 👋'} />
-// 	<Spacer />
-// </Wrapper>
+//Only the first letter of the Links are capital
+const linksReferencer = {
+    Sirt: "https://www.sirtcentre.com/",
+    Bell: "https://www.bell.ca/",
+    Designware: "https://www.designware.io/",
+    Linkedin: "",
+}
 
 export default messageArray;

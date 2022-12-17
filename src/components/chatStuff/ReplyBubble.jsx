@@ -37,12 +37,20 @@ export default function ReplyBubble({ text, paddingArray }) {
 	}
 }
 
+//#region Functions 
+
 function addTargetBlankBack() {
 	const links = document.querySelectorAll('.content a');
 	links.forEach((link) => {
 		link.setAttribute('target', '_blank');
+		link.setAttribute('rel', 'noopener noreferrer');
 	});
 }
+
+//#endregion
+
+
+//#region Styles 
 
 const PADDING_BREAKPOINT = '632px';
 
@@ -81,3 +89,5 @@ const Bubble = styled.div`
 		margin: 0;
 	}
 `;
+
+//#endregion

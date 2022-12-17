@@ -1,8 +1,12 @@
+//#region Imports 
+
 import React from 'react';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import messageArray from './chatStuff/messages';
+
+//#endregion
 
 export default function Chatbox() {
 	const paddingArray = [ 13, 16 ];
@@ -30,7 +34,28 @@ export default function Chatbox() {
 	);
 }
 
-//Styles
+//#region Functions 
+
+
+
+//#endregion
+
+//#region CSS Functions 
+
+function intToStringWithPx(int) {
+	return `${int}px`;
+}
+function addAllElementsInArray(array) {
+	let sum = 0;
+	for (let i = 0; i < array.length; i++) {
+		sum += array[i];
+	}
+	return sum;
+}
+
+//#endregion
+
+//#region Styles 
 
 const PADDING_BREAKPOINT = '632px';
 
@@ -83,13 +108,4 @@ const Wrapper = styled.div`
 
 const Spacer = styled.div`min-height: 15px;`;
 
-function intToStringWithPx(int) {
-	return `${int}px`;
-}
-function addAllElementsInArray(array) {
-	let sum = 0;
-	for (let i = 0; i < array.length; i++) {
-		sum += array[i];
-	}
-	return sum;
-}
+//#endregion
