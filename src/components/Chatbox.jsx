@@ -1,65 +1,41 @@
-//#region Imports 
-import React, {useEffect} from 'react';
+//#region Imports
+import React from 'react';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
-import messageArray, {linksReferencer} from './chatStuff/messages';
+import getMessages from './chatStuff/messages';
 
 //#endregion
 
 export default function Chatbox() {
 	const paddingArray = [ 13, 16 ];
-
-	// let parcedMessageArray = parseMessageArray(messageArray);
+	const messagesArray = getMessages();
+	
 	let returnArray = [];
 	let previousType = 'question';
 
 	//Renderer from the "messages.js" file
-	for (let i = 0; i < messageArray.length; i++) {
-		if (messageArray[i].type !== previousType) {
+	for (let i = 0; i < messagesArray.length; i++) {
+		if (messagesArray[i].type !== previousType) {
 			returnArray.push(<Spacer key={i + 's'} />);
 		}
-		if (messageArray[i].type === 'reply') {
-			returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messageArray[i].text} />);
+		if (messagesArray[i].type === 'reply') {
+			returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
 			previousType = 'reply';
-		} else if (messageArray[i].type === 'question') {
-			returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messageArray[i].text} />);
+		} else if (messagesArray[i].type === 'question') {
+			returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
 			previousType = 'question';
 		}
 	}
-	return (
-		<Wrapper>
-			{returnArray}
-		</Wrapper>
-	);
+	return <Wrapper>{returnArray}</Wrapper>;
 }
 
-//#region Functions 
-function parseMessageArray() {
-
-
-
-	// let returnArray = [];
-	// const re = /\$\$.*\$\$/g;
-	// for (let i = 0; i < msgArray.length; i++) {
-	// 	let text = msgArray[i].text;
-	// 	text = text.replace(re, (match) => {
-	// 		match = match.replace(/\$\$/g, '');
-	// 		console.log("Match: " + match);
-	// 		let link = linksReferencer[match];
-	// 		console.log(link);
-	// 	});
-	// 	returnArray.push({ type: msgArray.type, text: text});
-	// }
-
-	// console.log(returnArray);
-	// return returnArray;
-}
+//#region Functions
 
 
 //#endregion
 
-//#region CSS Functions 
+//#region CSS Functions
 
 function intToStringWithPx(int) {
 	return `${int}px`;
@@ -74,7 +50,7 @@ function addAllElementsInArray(array) {
 
 //#endregion
 
-//#region Styles 
+//#region Styles
 
 const PADDING_BREAKPOINT = '632px';
 

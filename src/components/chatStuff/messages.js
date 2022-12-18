@@ -1,51 +1,51 @@
 // This file contains the messages that will be displayed in the chat
 
 const messageArray = [
-    // {
-    //     type: 'question',
-    //     text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
-    // },
-    // {
-    //     type: 'question',
-    //     text: 'Could you please tell me a little bit about yourself?',
-    // },
-    // {
-    //     type: 'reply',
-    //     text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College.',
-    // },
-    // {
-    //     type: 'reply',
-    //     text:
-    //         'Love coding, engineering and flying ✈️ Have excellent interpersonal skills and am constantly interested in new technologies.',
-    // },
-    // {
-    //     type: 'reply',
-    //     text: 'For example, right now learning Web3 on the side.',
-    // },
-    // {
-    //     type: 'question',
-    //     text: "Ok, that's great, but what are your technical skills?",
-    // },
-    // {
-    //     type: 'reply',
-    //     text:
-    //         'I know React and Vue.js (+ JS, HTML, CSS), C# from my Unity game engine passion, Java from college courses and Git',
-    // },
-    // {
-    //     type: 'reply',
-    //     text: 'These are the major ones',
-    // },
-    // {
-    //     type: 'question',
-    //     text: 'Good, thanks. And work experience?',
-    // },
-    // {
-    //     type: 'reply',
-    //     text:
-    //         "I had an internship at :Root where I did " +
-    //         'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
-    //         "Extention was an instant success and the company's sales skyrocketed that month 🚀",
-    // },
+    {
+        type: 'question',
+        text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
+    },
+    {
+        type: 'question',
+        text: 'Could you please tell me a little bit about yourself?',
+    },
+    {
+        type: 'reply',
+        text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College.',
+    },
+    {
+        type: 'reply',
+        text:
+            'Love coding, engineering and flying ✈️ Have excellent interpersonal skills and am constantly interested in new technologies.',
+    },
+    {
+        type: 'reply',
+        text: 'For example, right now learning Web3 on the side.',
+    },
+    {
+        type: 'question',
+        text: "Ok, that's great, but what are your technical skills?",
+    },
+    {
+        type: 'reply',
+        text:
+            'I know React and Vue.js (+ JS, HTML, CSS), C# from my Unity game engine passion, Java from college courses and Git',
+    },
+    {
+        type: 'reply',
+        text: 'These are the major ones',
+    },
+    {
+        type: 'question',
+        text: 'Good, thanks. And work experience?',
+    },
+    {
+        type: 'reply',
+        text:
+            "I had an internship at :Root where I did " +
+            'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
+            "Extention was an instant success and the company's sales skyrocketed that month 🚀",
+    },
     {
         type: 'reply',
         text:
@@ -214,5 +214,16 @@ const linksReferencer = {
     }
 }
 
-export default messageArray;
-export {linksReferencer};
+export default function getMessages() {
+    for (let i = 0; i < messageArray.length; i++) {
+        const re = /\$\$.*\$\$/g;
+        messageArray[i].text = messageArray[i].text.replace(re, (match) => {
+            match = match.replace(/\$\$/g, '');
+            console.log('Match: ' + match);
+            const link = linksReferencer[match];
+            console.log(link);
+            return ` <a href="${link.url}">${link.text}</a> `;
+        });
+    }
+    return messageArray;
+};
