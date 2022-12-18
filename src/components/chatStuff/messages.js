@@ -220,7 +220,7 @@ export default function getMessages() {
         messageArray[i].text = messageArray[i].text.replace(re, (match) => {
             match = match.replace(/\$\$/g, '');
             const link = linksReferencer[match];
-            return ` <a href="${link.url}">${link.text}</a> `;
+            return `<a href="${link.url}">${link.text}</a>`;
         });
     }
     return messageArray;
