@@ -1,16 +1,16 @@
 //#region Imports 
-
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
-import messageArray from './chatStuff/messages';
+import messageArray, {linksReferencer} from './chatStuff/messages';
 
 //#endregion
 
 export default function Chatbox() {
 	const paddingArray = [ 13, 16 ];
 
+	// let parcedMessageArray = parseMessageArray(messageArray);
 	let returnArray = [];
 	let previousType = 'question';
 
@@ -35,7 +35,26 @@ export default function Chatbox() {
 }
 
 //#region Functions 
+function parseMessageArray() {
 
+
+
+	// let returnArray = [];
+	// const re = /\$\$.*\$\$/g;
+	// for (let i = 0; i < msgArray.length; i++) {
+	// 	let text = msgArray[i].text;
+	// 	text = text.replace(re, (match) => {
+	// 		match = match.replace(/\$\$/g, '');
+	// 		console.log("Match: " + match);
+	// 		let link = linksReferencer[match];
+	// 		console.log(link);
+	// 	});
+	// 	returnArray.push({ type: msgArray.type, text: text});
+	// }
+
+	// console.log(returnArray);
+	// return returnArray;
+}
 
 
 //#endregion

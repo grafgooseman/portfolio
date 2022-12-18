@@ -1,55 +1,55 @@
 // This file contains the messages that will be displayed in the chat
 
 const messageArray = [
-    {
-        type: 'question',
-        text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
-    },
-    {
-        type: 'question',
-        text: 'Could you please tell me a little bit about yourself?',
-    },
-    {
-        type: 'reply',
-        text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College.',
-    },
+    // {
+    //     type: 'question',
+    //     text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
+    // },
+    // {
+    //     type: 'question',
+    //     text: 'Could you please tell me a little bit about yourself?',
+    // },
+    // {
+    //     type: 'reply',
+    //     text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College.',
+    // },
+    // {
+    //     type: 'reply',
+    //     text:
+    //         'Love coding, engineering and flying ✈️ Have excellent interpersonal skills and am constantly interested in new technologies.',
+    // },
+    // {
+    //     type: 'reply',
+    //     text: 'For example, right now learning Web3 on the side.',
+    // },
+    // {
+    //     type: 'question',
+    //     text: "Ok, that's great, but what are your technical skills?",
+    // },
+    // {
+    //     type: 'reply',
+    //     text:
+    //         'I know React and Vue.js (+ JS, HTML, CSS), C# from my Unity game engine passion, Java from college courses and Git',
+    // },
+    // {
+    //     type: 'reply',
+    //     text: 'These are the major ones',
+    // },
+    // {
+    //     type: 'question',
+    //     text: 'Good, thanks. And work experience?',
+    // },
+    // {
+    //     type: 'reply',
+    //     text:
+    //         "I had an internship at :Root where I did " +
+    //         'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
+    //         "Extention was an instant success and the company's sales skyrocketed that month 🚀",
+    // },
     {
         type: 'reply',
         text:
-            'Love coding, engineering and flying ✈️ Have excellent interpersonal skills and am constantly interested in new technologies.',
-    },
-    {
-        type: 'reply',
-        text: 'For example, right now learning Web3 on the side.',
-    },
-    {
-        type: 'question',
-        text: "Ok, that's great, but what are your technical skills?",
-    },
-    {
-        type: 'reply',
-        text:
-            'I know React and Vue.js (+ JS, HTML, CSS), C# from my Unity game engine passion, Java from college courses and Git',
-    },
-    {
-        type: 'reply',
-        text: 'These are the major ones',
-    },
-    {
-        type: 'question',
-        text: 'Good, thanks. And work experience?',
-    },
-    {
-        type: 'reply',
-        text:
-            "I had an internship at :Root where I did " +
-            'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
-            "Extention was an instant success and the company's sales skyrocketed that month 🚀",
-    },
-    {
-        type: 'reply',
-        text:
-            'Also I had a coop placement at <a   href=\'https://www.sirtcentre.com/\'>SIRT</a> where I and a small team ' +
+            'Also I had a coop placement at $$SIRT$$ where I and a small team ' +
             'together maintained and expanded a complex VR meeting app for <a href=\'https://www.bell.ca/\'  >Bell Canada</a><br><br>' +
             'In addition, during the same coop, I created a web scraper to investigate the feasibility ' +
             'of a new Image to Website AI model for <a href=\'https://www.designware.io/\'  >Designware</a> 🤖',
@@ -152,10 +152,67 @@ const messageArray = [
 
 //Only the first letter of the Links are capital
 const linksReferencer = {
-    Sirt: "https://www.sirtcentre.com/",
-    Bell: "https://www.bell.ca/",
-    Designware: "https://www.designware.io/",
-    Linkedin: "",
+    SIRT: {
+        text: "SIRT",
+        url: "https://www.sirtcentre.com/"
+    },
+    Bell: {
+        text: "Bell",
+        url: "https://www.bell.ca/"
+    },
+    DesignWare: {
+        text: "DesignWare",
+        url: "https://www.designware.io/"
+    },
+    ShopifyFrontChallenge: {
+        text: "Shopify Challenge",
+        url: "https://shopify-front-challenge.pages.dev/"
+    },
+    OpenAI: {
+        text: "OpenAI",
+        url: "https://openai.com/about/"
+    },
+    OpenAiAPI: {
+        text: "OpenAI API",
+        url: "https://openai.com/api/"
+    },
+    PlayStoreGame: {
+        text: "PlayStoreGame",
+        url: "https://play.google.com/store/apps/details?id=com.PotatoJuice.GunnyGranny&hl=en&gl=US"
+    },
+    Gmtk2021: {
+        text: "Gmtk2021",
+        url: "https://itch.io/jam/gmtk-2021"
+    },
+    GmtkGame: {
+        text: "GmtkGame",
+        url: "https://grafgooseman.itch.io/no-control"
+    },
+    WestWindDrone: {
+        text: "WestWindDrone",
+        url: "https://grafgooseman.github.io/west-wind-drone-website/"
+    },
+    Vankelly: {
+        text: "Vankelly",
+        url: "https://grafgooseman.github.io/vankellyWebsite/index.html"
+    },
+    Github: {
+        text: "Github",
+        url: "https://github.com/grafgooseman"
+    },
+    LinkedIn: {
+        text: "LinkedIn",
+        url: "https://www.linkedin.com/in/gusev-artem/"
+    },
+    SheridanMail: {
+        text: "SheridanMail",
+        url: "mailto:gusev@sheridancollege.ca"
+    },
+    Resume: {
+        text: "Resume",
+        url: "https://docs.google.com/document/d/1s42rtLqTcQHcgdMoueHmS7KIjvMR01FV/edit?usp=sharing&ouid=100985831291466163407&rtpof=true&sd=true"
+    }
 }
 
 export default messageArray;
+export {linksReferencer};

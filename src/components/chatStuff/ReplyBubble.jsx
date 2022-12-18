@@ -10,11 +10,10 @@ export default function ReplyBubble({ text, paddingArray }) {
 	const typingAnimationLength = 2500;
 	const [renderTypingAnimation, setRenderTypingAnimation] = React.useState(true);
 
-	//Returns target _blank to links after sterialization
 	useEffect(() => {
 		setTimeout(() => {
 			setRenderTypingAnimation(false);
-			addTargetBlankBack();
+			addTargetBlankAndRelBack();
 		}, typingAnimationLength);
 	}, []);
 
@@ -39,7 +38,9 @@ export default function ReplyBubble({ text, paddingArray }) {
 
 //#region Functions 
 
-function addTargetBlankBack() {
+
+
+function addTargetBlankAndRelBack() {
 	const links = document.querySelectorAll('.content a');
 	links.forEach((link) => {
 		link.setAttribute('target', '_blank');
