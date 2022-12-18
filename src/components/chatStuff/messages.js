@@ -1,5 +1,33 @@
 // This file contains the messages that will be displayed in the chat
 
+const newMessageArray = {
+    greeting: {
+        messages: [
+            {
+                type: 'question',
+                text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
+            },
+            {
+                type: 'question',
+                text: 'Could you please tell me a little bit about yourself?',
+            },
+            {
+                type: 'reply',
+                text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College.',
+            },
+            {
+                type: 'reply',
+                text:
+                    'Love coding, engineering and flying ✈️ Have excellent interpersonal skills and am constantly interested in new technologies.',
+            },
+            {
+                type: 'reply',
+                text: 'For example, right now learning Web3 on the side.',
+            }
+        ]
+    }
+};
+
 const messageArray = [
     {
         type: 'question',
@@ -214,6 +242,9 @@ const linksReferencer = {
     }
 }
 
+
+//#region exports 
+
 export default function getMessages() {
     for (let i = 0; i < messageArray.length; i++) {
         const re = /\$\$.*?\$\$/g;
@@ -225,3 +256,7 @@ export default function getMessages() {
     }
     return messageArray;
 };
+
+export {newMessageArray};
+
+//#endregion
