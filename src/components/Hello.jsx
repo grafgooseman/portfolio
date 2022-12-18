@@ -77,7 +77,10 @@ const LaptopHolder = styled.div`
 `;
 
 const Laptop = styled.img`
-	width: 300px;
+	@media (max-width: 330px) {
+		width: 200px;
+	}
+	max-width: 300px;
 	flex: 1 1 150px;
 	margin: 0 20px 0 20px;
 `;

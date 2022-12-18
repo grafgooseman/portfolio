@@ -20,6 +20,7 @@ export default function ScrollDownArrow() {
 	);
 }
 
+//TODO: Make smaller on mobile
 const Wrapper = styled.div`
 	/* Arrow & Hover Animation */
 	.content {

@@ -69,6 +69,7 @@ const Wrapper = styled.div`
 	height: 100vh;
 `;
 
+//TODO: Make Smaller on smalled devices
 const ScrollToChat = styled.div`
 	color: white;
 	position: fixed;

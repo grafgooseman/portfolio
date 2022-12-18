@@ -3,30 +3,33 @@ import React from 'react';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
-import getMessages from './chatStuff/messages';
+import getMessages, {newMessageArray} from './chatStuff/messages';
 
 //#endregion
 
 export default function Chatbox() {
 	const paddingArray = [ 13, 16 ];
 	const messagesArray = getMessages();
-	
+
 	let returnArray = [];
-	let previousType = 'question';
+
+	
+
+	// let previousType = 'question';
 
 	//Renderer from the "messages.js" file
-	for (let i = 0; i < messagesArray.length; i++) {
-		if (messagesArray[i].type !== previousType) {
-			returnArray.push(<Spacer key={i + 's'} />);
-		}
-		if (messagesArray[i].type === 'reply') {
-			returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
-			previousType = 'reply';
-		} else if (messagesArray[i].type === 'question') {
-			returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
-			previousType = 'question';
-		}
-	}
+	// for (let i = 0; i < messagesArray.length; i++) {
+	// 	if (messagesArray[i].type !== previousType) {
+	// 		returnArray.push(<Spacer key={i + 's'} />);
+	// 	}
+	// 	if (messagesArray[i].type === 'reply') {
+	// 		returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
+	// 		previousType = 'reply';
+	// 	} else if (messagesArray[i].type === 'question') {
+	// 		returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
+	// 		previousType = 'question';
+	// 	}
+	// }
 	return <Wrapper>{returnArray}</Wrapper>;
 }
 
