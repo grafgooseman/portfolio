@@ -50,9 +50,9 @@ const messageArray = [
         type: 'reply',
         text:
             'Also I had a coop placement at $$SIRT$$ where I and a small team ' +
-            'together maintained and expanded a complex VR meeting app for <a href=\'https://www.bell.ca/\'  >Bell Canada</a><br><br>' +
+            'together maintained and expanded a complex VR meeting app for $$Bell$$<br><br>' +
             'In addition, during the same coop, I created a web scraper to investigate the feasibility ' +
-            'of a new Image to Website AI model for <a href=\'https://www.designware.io/\'  >Designware</a> 🤖',
+            'of a new Image to Website AI model for $$Designware$$ 🤖',
     },
     {
         type: 'reply',
@@ -70,25 +70,25 @@ const messageArray = [
         type: 'reply',
         text:
             'Yes, recently, as a challenge from Shopify, I made a ' +
-            '🌟<a href=\'https://shopify-front-challenge.pages.dev/\'  >website</a> ' +
+            '🌟$$ShopifyFrontChallenge$$ ' +
             'where users can ask any question to different AI engines from ' +
-            '<a href=\'https://openai.com/about/\'  >OpenAI</a> <br><br>' +
+            '$$OpenAI$$ <br><br>' +
             'Website build on React and utilises async requests to interact with ' +
-            '<a href=\'https://openai.com/api/\'  >OpenAI API</a>'
+            '$$OpenAiAPI$$'
     },
     {
         type: 'reply',
         text:
             'Also, I made and ' +
-            '🕹️ <a href=\'https://play.google.com/store/apps/details?id=com.PotatoJuice.GunnyGranny&hl=en&gl=US\'  >published</a>' +
+            '🕹️ $$PlayStoreGame$$' +
             ' my own mobile game using the Unity game engine and C#'
     },
     {
         type: 'reply',
         text:
             'Participated in Game James the most recent one is the 2021 ' +
-            '<a href=\'https://itch.io/jam/gmtk-2021\'  >Game Makers Toolkit</a><br><br>' +
-            'Playable in the Browser with this <a href=\'https://grafgooseman.itch.io/no-control\'  >link</a>✨'
+            '$$Gmtk2021$$<br><br>' +
+            'Playable in the Browser with this $$GmtkGame$$✨'
     },
     {
         type: 'reply',
@@ -98,12 +98,12 @@ const messageArray = [
     {
         type: 'reply',
         text:
-            '🎥 <a href=\'https://grafgooseman.github.io/vankellyWebsite/index.html\'  >Film Director Portfolio</a>'
+            '🎥 $$Vankelly$$'
     },
     {
         type: 'reply',
         text:
-            '🚁 <a href=\'https://grafgooseman.github.io/west-wind-drone-website/\'  >Drone Filming Landing Page</a>'
+            '🚁 $$WestWindDrone$$'
     },
     {
         type: 'reply',
@@ -112,7 +112,7 @@ const messageArray = [
     },
     {
         type: 'reply',
-        text: 'And my GitHub that I regularly push to is <a href=\'https://github.com/grafgooseman\'  >here</a> 🐈'
+        text: 'And my GitHub that I regularly push to is $$Github$$ 🐈'
     },
     {
         type: 'question',
@@ -126,15 +126,15 @@ const messageArray = [
         type: 'reply',
         text:
             'Sure, here is my ' +
-            '<a href=\'https://www.linkedin.com/in/gusev-artem/\'>LinkedIn</a>, ' +
+            '$$LinkedIn$$, ' +
             ' in addition I can be reached via emal: <br>' +
-            '<a href=\'mailto:gusev@sheridancollege.ca\'>gusev@sheridancollege.ca</a>'
+            '$$SheridanMail$$'
     },
     {
         type: 'reply',
         text:
             'And this is my general ' +
-            '<a href=\'https://docs.google.com/document/d/1s42rtLqTcQHcgdMoueHmS7KIjvMR01FV/edit?usp=sharing&ouid=100985831291466163407&rtpof=true&sd=true\'  >Resume</a>'
+            '$$Resume$$'
     },
     {
         type: 'question',
@@ -157,15 +157,15 @@ const linksReferencer = {
         url: "https://www.sirtcentre.com/"
     },
     Bell: {
-        text: "Bell",
+        text: "Bell Canada",
         url: "https://www.bell.ca/"
     },
-    DesignWare: {
-        text: "DesignWare",
+    Designware: {
+        text: "Designware",
         url: "https://www.designware.io/"
     },
     ShopifyFrontChallenge: {
-        text: "Shopify Challenge",
+        text: "website",
         url: "https://shopify-front-challenge.pages.dev/"
     },
     OpenAI: {
@@ -177,27 +177,27 @@ const linksReferencer = {
         url: "https://openai.com/api/"
     },
     PlayStoreGame: {
-        text: "PlayStoreGame",
+        text: "published",
         url: "https://play.google.com/store/apps/details?id=com.PotatoJuice.GunnyGranny&hl=en&gl=US"
     },
     Gmtk2021: {
-        text: "Gmtk2021",
+        text: "Game Makers Toolkit",
         url: "https://itch.io/jam/gmtk-2021"
     },
     GmtkGame: {
-        text: "GmtkGame",
+        text: "link",
         url: "https://grafgooseman.itch.io/no-control"
     },
     WestWindDrone: {
-        text: "WestWindDrone",
+        text: "Drone Filming Landing Page",
         url: "https://grafgooseman.github.io/west-wind-drone-website/"
     },
     Vankelly: {
-        text: "Vankelly",
+        text: "Film Director Portfolio",
         url: "https://grafgooseman.github.io/vankellyWebsite/index.html"
     },
     Github: {
-        text: "Github",
+        text: "here",
         url: "https://github.com/grafgooseman"
     },
     LinkedIn: {
@@ -205,7 +205,7 @@ const linksReferencer = {
         url: "https://www.linkedin.com/in/gusev-artem/"
     },
     SheridanMail: {
-        text: "SheridanMail",
+        text: "gusev@sheridancollege.ca",
         url: "mailto:gusev@sheridancollege.ca"
     },
     Resume: {
@@ -216,12 +216,10 @@ const linksReferencer = {
 
 export default function getMessages() {
     for (let i = 0; i < messageArray.length; i++) {
-        const re = /\$\$.*\$\$/g;
+        const re = /\$\$.*?\$\$/g;
         messageArray[i].text = messageArray[i].text.replace(re, (match) => {
             match = match.replace(/\$\$/g, '');
-            console.log('Match: ' + match);
             const link = linksReferencer[match];
-            console.log(link);
             return ` <a href="${link.url}">${link.text}</a> `;
         });
     }
