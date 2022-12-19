@@ -42,7 +42,6 @@ export default function ReplyBubble({ text, paddingArray }) {
 
 function addTargetBlankAndRelBack() {
 	const links = document.querySelectorAll('.content a');
-	console.log(links);
 	links.forEach((link) => {
 		link.setAttribute('target', '_blank');
 		link.setAttribute('rel', 'noopener noreferrer');

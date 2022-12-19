@@ -1,6 +1,6 @@
 // This file contains the messages that will be displayed in the chat
 
-const newMessageArray = {
+const newMessage = {
     greeting: {
         messages: [
             {
@@ -257,6 +257,6 @@ export default function getMessages() {
     return messageArray;
 };
 
-export {newMessageArray};
+export {newMessage};
 
 //#endregion

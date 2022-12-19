@@ -1,40 +1,48 @@
 //#region Imports
-import React from 'react';
+import React, {useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
-import getMessages, {newMessageArray} from './chatStuff/messages';
+import getMessages, {newMessage} from './chatStuff/messages';
 
 //#endregion
 
 export default function Chatbox() {
-	const paddingArray = [ 13, 16 ];
 	const messagesArray = getMessages();
 
+	// Renders 2 times, because React, should be OK though
+	// Can only be a problem if API call is made
+	// Or counter is used. Reference: https://upmostly.com/tutorials/why-is-my-useeffect-hook-running-twice-in-react#:~:text=React%20expects%20your%20functions%20to,cause%20the%20same%20result%20twice.
+
 	let returnArray = [];
-
+	returnArray = renderQuestionAnswerBlock(newMessage.greeting.messages);
 	
-
-	// let previousType = 'question';
-
-	//Renderer from the "messages.js" file
-	// for (let i = 0; i < messagesArray.length; i++) {
-	// 	if (messagesArray[i].type !== previousType) {
-	// 		returnArray.push(<Spacer key={i + 's'} />);
-	// 	}
-	// 	if (messagesArray[i].type === 'reply') {
-	// 		returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
-	// 		previousType = 'reply';
-	// 	} else if (messagesArray[i].type === 'question') {
-	// 		returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
-	// 		previousType = 'question';
-	// 	}
-	// }
 	return <Wrapper>{returnArray}</Wrapper>;
 }
 
 //#region Functions
+function renderQuestionAnswerBlock(messagesArray){
+	const paddingArray = [ 13, 16 ];
 
+	const returnArray = [];
+
+	let previousType = 'question';
+	for (let i = 0; i < messagesArray.length; i++) {
+		if (messagesArray[i].type !== previousType) {
+			returnArray.push(<Spacer key={i + 's'} />);
+		}
+		if (messagesArray[i].type === 'reply') {
+			returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
+			previousType = 'reply';
+		} else if (messagesArray[i].type === 'question') {
+			returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
+			previousType = 'question';
+		}
+	}
+
+	console.log(returnArray);
+	return returnArray;
+}
 
 //#endregion
 
