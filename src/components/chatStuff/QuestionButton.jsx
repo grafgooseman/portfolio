@@ -5,10 +5,12 @@ import panelQuestionTail from '../../images/panelQuestionTail.svg';
 export default function QuestionButton() {
 	return (
 		<Wrapper>
-			<Bubble>
-				<p>Experience</p>
-				<img src={panelQuestionTail} alt="" />
-			</Bubble>
+			<MiddleWrapper>
+				<Bubble>
+					<p>Experience</p>
+					<img src={panelQuestionTail} alt="" />
+				</Bubble>
+			</MiddleWrapper>
 		</Wrapper>
 	);
 }
@@ -17,6 +19,14 @@ export default function QuestionButton() {
 const BUTTON_COLOR = '#0078FF';
 
 const Wrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+`;
+
+const MiddleWrapper = styled.div`
+	margin: 1px 10px 1px 10px;
 	border-radius: 20px;
 	border: 1.3px solid ${BUTTON_COLOR};
 	display: flex;
@@ -31,7 +41,7 @@ const Wrapper = styled.div`
 `;
 
 const Bubble = styled.div`
-    margin: 1px 10px 1px 10px;
+	margin: 1px 10px 1px 10px;
 	max-width: 200px;
 
 	display: flex;
@@ -53,7 +63,7 @@ const Bubble = styled.div`
 		position: absolute;
 		width: 16.5px;
 		height: 17px;
-		right: -18px;
+		right: -18.5px;
 		bottom: -4px;
 	}
 

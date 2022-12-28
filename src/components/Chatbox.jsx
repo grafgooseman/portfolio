@@ -3,9 +3,12 @@ import React, {useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
+import QuestionButton from './chatStuff/QuestionButton';
 import getMessages, {newMessage} from './chatStuff/messages';
 
 //#endregion
+
+const paddingArray = [ 13, 16 ];
 
 export default function Chatbox() {
 	const messagesArray = getMessages();
@@ -15,14 +18,18 @@ export default function Chatbox() {
 	// Or counter is used. Reference: https://upmostly.com/tutorials/why-is-my-useeffect-hook-running-twice-in-react#:~:text=React%20expects%20your%20functions%20to,cause%20the%20same%20result%20twice.
 
 	let returnArray = [];
-	returnArray = renderQuestionAnswerBlock(newMessage.greeting.messages);
+
+	//Now the return array is just one of the questions answers.
+	//A new system must be implemented here
+
+	returnArray.push(<QuestionButton paddingArray={paddingArray}/>);
+	returnArray.push(renderQuestionAnswerBlock(newMessage.greeting.messages));
 	
 	return <Wrapper>{returnArray}</Wrapper>;
 }
 
 //#region Functions
 function renderQuestionAnswerBlock(messagesArray){
-	const paddingArray = [ 13, 16 ];
 
 	const returnArray = [];
 
