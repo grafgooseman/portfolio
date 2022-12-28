@@ -25,7 +25,154 @@ const newMessage = {
                 text: 'For example, right now learning Web3 on the side.',
             }
         ]
+    },
+    technicalSkills: {
+        messages: [
+            {
+                type: 'question',
+                text: "Ok, that's great, but what are your technical skills?",
+            },
+            {
+                type: 'reply',
+                text:
+                    'I know React and Vue.js (+ JS, HTML, CSS), C# from my Unity game engine passion, Java from college courses and Git',
+            },
+            {
+                type: 'reply',
+                text: 'These are the major ones',
+            },
+        ]
+    },
+    workExperience: {
+        messages: [
+            {
+                type: 'question',
+                text: 'Good, thanks. And work experience?',
+            },
+            {
+                type: 'reply',
+                text:
+                    "I had an internship at :Root where I did " +
+                    'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
+                    "Extention was an instant success and the company's sales skyrocketed that month 🚀",
+            },
+            {
+                type: 'reply',
+                text:
+                    'Also I had a coop placement at $$SIRT$$ where I and a small team ' +
+                    'together maintained and expanded a complex VR meeting app for $$Bell$$<br><br>' +
+                    'In addition, during the same coop, I created a web scraper to investigate the feasibility ' +
+                    'of a new Image to Website AI model for $$Designware$$ 🤖',
+            },
+            {
+                type: 'reply',
+                text: 'I had other positions but these are the most relevant',
+            },
+        ]
+    },
+    personalProjects: {
+        messages: [
+            {
+                type: 'question',
+                text: 'Hmm, interesting...',
+            },
+            {
+                type: 'question',
+                text: 'Also, do you have any personal projects to show?',
+            },
+            {
+                type: 'reply',
+                text:
+                    'Yes, recently, as a challenge from Shopify, I made a ' +
+                    '🌟$$ShopifyFrontChallenge$$ ' +
+                    'where users can ask any question to different AI engines from ' +
+                    '$$OpenAI$$ <br><br>' +
+                    'Website build on React and utilises async requests to interact with ' +
+                    '$$OpenAiAPI$$'
+            },
+            {
+                type: 'reply',
+                text:
+                    'Also, I made and ' +
+                    '🕹️ $$PlayStoreGame$$' +
+                    ' my own mobile game using the Unity game engine and C#'
+            },
+            {
+                type: 'reply',
+                text:
+                    'Participated in Game James the most recent one is the 2021 ' +
+                    '$$Gmtk2021$$<br><br>' +
+                    'Playable in the Browser with this $$GmtkGame$$✨'
+            },
+            {
+                type: 'reply',
+                text:
+                    'And made a few freelance 💻 websites'
+            },
+            {
+                type: 'reply',
+                text:
+                    '🎥 $$Vankelly$$'
+            },
+            {
+                type: 'reply',
+                text:
+                    '🚁 $$WestWindDrone$$'
+            },
+            {
+                type: 'reply',
+                text:
+                    'This website could also be considered as a React practice project '
+            },
+            {
+                type: 'reply',
+                text: 'And my GitHub that I regularly push to is $$Github$$ 🐈'
+            },
+        ]
+    },
+    contacts: {
+        messages: [
+            {
+                type: 'question',
+                text: 'Thats great',
+            },
+            {
+                type: 'question',
+                text: 'Do you want to leave any contact links?',
+            },
+            {
+                type: 'reply',
+                text:
+                    'Sure, here is my ' +
+                    '$$LinkedIn$$, ' +
+                    ' in addition I can be reached via emal: <br>' +
+                    '$$SheridanMail$$'
+            },
+            {
+                type: 'reply',
+                text:
+                    'And this is my general ' +
+                    '$$Resume$$'
+            },
+        ]
+    },
+    goodbye: {
+        messages: [
+            {
+                type: 'question',
+                text: 'Ok, thank you Artem'
+            },
+            {
+                type: 'reply',
+                text: 'Thank you too'
+            },
+            {
+                type: 'reply',
+                text: 'Have a great rest of your day 👋'
+            },
+        ]
     }
+
 };
 
 const messageArray = [

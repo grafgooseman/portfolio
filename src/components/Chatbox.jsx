@@ -1,5 +1,6 @@
 //#region Imports
 import React, {useEffect, useRef } from 'react';
+import { v4 as uid } from 'uuid';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
@@ -17,13 +18,17 @@ export default function Chatbox() {
 	// Can only be a problem if API call is made
 	// Or counter is used. Reference: https://upmostly.com/tutorials/why-is-my-useeffect-hook-running-twice-in-react#:~:text=React%20expects%20your%20functions%20to,cause%20the%20same%20result%20twice.
 
+	// let arrayOfTopics = [];
+
 	let returnArray = [];
 
 	//Now the return array is just one of the questions answers.
 	//A new system must be implemented here
 
-	returnArray.push(<QuestionButton paddingArray={paddingArray}/>);
 	returnArray.push(renderQuestionAnswerBlock(newMessage.greeting.messages));
+	returnArray.push(renderQuestionAnswerBlock(newMessage.technicalSkills.messages));
+	returnArray.push(<QuestionButton key={uid()} paddingArray={paddingArray}/>);
+	returnArray.push(<QuestionButton key={uid()} paddingArray={paddingArray}/>);
 	
 	return <Wrapper>{returnArray}</Wrapper>;
 }
@@ -36,16 +41,17 @@ function renderQuestionAnswerBlock(messagesArray){
 	let previousType = 'question';
 	for (let i = 0; i < messagesArray.length; i++) {
 		if (messagesArray[i].type !== previousType) {
-			returnArray.push(<Spacer key={i + 's'} />);
+			returnArray.push(<Spacer key={uid()} />);
 		}
 		if (messagesArray[i].type === 'reply') {
-			returnArray.push(<ReplyBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
+			returnArray.push(<ReplyBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
 			previousType = 'reply';
 		} else if (messagesArray[i].type === 'question') {
-			returnArray.push(<QuestionBubble key={i} paddingArray={paddingArray} text={messagesArray[i].text} />);
+			returnArray.push(<QuestionBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
 			previousType = 'question';
 		}
 	}
+	returnArray.push(<Spacer key={uid()} />);
 
 	console.log(returnArray);
 	return returnArray;
