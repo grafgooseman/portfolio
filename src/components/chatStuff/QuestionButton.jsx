@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import panelQuestionTail from '../../images/panelQuestionTail.svg';
 
-export default function QuestionButton() {
+export default function QuestionButton({ text}) {
 	return (
 		<Wrapper>
 			<MiddleWrapper>
 				<Bubble>
-					<p>Experience</p>
+					<p>{text}</p>
 					<img src={panelQuestionTail} alt="" />
 				</Bubble>
 			</MiddleWrapper>

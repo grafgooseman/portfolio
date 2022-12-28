@@ -1,6 +1,6 @@
 // This file contains the messages that will be displayed in the chat
 
-const newMessage = {
+const messageArray = {
     greeting: {
         messages: [
             {
@@ -175,7 +175,7 @@ const newMessage = {
 
 };
 
-const messageArray = [
+const messageArrayOld = [
     {
         type: 'question',
         text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
@@ -392,18 +392,22 @@ const linksReferencer = {
 
 //#region exports 
 
-export default function getMessages() {
-    for (let i = 0; i < messageArray.length; i++) {
+export default function getMessageBlock(messageBlockName){
+    return linkifyMessageArray(messageArray[messageBlockName].messages);
+}
+
+function linkifyMessageArray(arr) {
+    for (let i = 0; i < arr.length; i++) {
         const re = /\$\$.*?\$\$/g;
-        messageArray[i].text = messageArray[i].text.replace(re, (match) => {
+        arr[i].text = arr[i].text.replace(re, (match) => {
             match = match.replace(/\$\$/g, '');
             const link = linksReferencer[match];
             return `<a href="${link.url}">${link.text}</a>`;
         });
     }
-    return messageArray;
+    return arr;
 };
 
-export {newMessage};
+export {messageArray};
 
 //#endregion

@@ -1,18 +1,18 @@
 //#region Imports
-import React, {useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { v4 as uid } from 'uuid';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import QuestionButton from './chatStuff/QuestionButton';
-import getMessages, {newMessage} from './chatStuff/messages';
+import getMessageBlock from './chatStuff/messages';
 
 //#endregion
 
 const paddingArray = [ 13, 16 ];
 
 export default function Chatbox() {
-	const messagesArray = getMessages();
+	// const messageArray = getMessages();
 
 	// Renders 2 times, because React, should be OK though
 	// Can only be a problem if API call is made
@@ -24,18 +24,17 @@ export default function Chatbox() {
 
 	//Now the return array is just one of the questions answers.
 	//A new system must be implemented here
+	console.log(getMessageBlock('greeting'));
+	returnArray.push(renderQuestionAnswerBlock(getMessageBlock('greeting')));
+	returnArray.push(renderQuestionAnswerBlock(getMessageBlock('workExperience')));
+	returnArray.push(<QuestionButton key={uid()} text={"Experience"}/>);
+	returnArray.push(<QuestionButton key={uid()} text={"Skills"}/>);
 
-	returnArray.push(renderQuestionAnswerBlock(newMessage.greeting.messages));
-	returnArray.push(renderQuestionAnswerBlock(newMessage.technicalSkills.messages));
-	returnArray.push(<QuestionButton key={uid()} paddingArray={paddingArray}/>);
-	returnArray.push(<QuestionButton key={uid()} paddingArray={paddingArray}/>);
-	
 	return <Wrapper>{returnArray}</Wrapper>;
 }
 
 //#region Functions
-function renderQuestionAnswerBlock(messagesArray){
-
+function renderQuestionAnswerBlock(messagesArray) {
 	const returnArray = [];
 
 	let previousType = 'question';
@@ -100,10 +99,8 @@ const Wrapper = styled.div`
 	padding: ${intToStringWithPx(CHAT_PADDING_SMALL)};
 	width: calc(100% - ${intToStringWithPx(CHAT_PADDING_SMALL) * 2});
 	height: calc(
-		100% -
-			${intToStringWithPx(
-				addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ])
-			)}
+		/* if $ is on a different line it will yell at me  */
+		100% - ${intToStringWithPx(addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ]))}
 	);
 
 	@media (min-width: ${PADDING_BREAKPOINT}) {
