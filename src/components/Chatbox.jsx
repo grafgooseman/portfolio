@@ -5,20 +5,21 @@ import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import QuestionButton from './chatStuff/QuestionButton';
-import getMessageBlock from './chatStuff/messages';
+import getMessageBlock, {getTriggerButtonTextMapping} from './chatStuff/messages';
 
 //#endregion
 
 const paddingArray = [ 13, 16 ];
 
 export default function Chatbox() {
-	// const messageArray = getMessages();
-
+	
 	// Renders 2 times, because React, should be OK though
 	// Can only be a problem if API call is made
 	// Or counter is used. Reference: https://upmostly.com/tutorials/why-is-my-useeffect-hook-running-twice-in-react#:~:text=React%20expects%20your%20functions%20to,cause%20the%20same%20result%20twice.
 
-	// let arrayOfTopics = [];
+	const mappingOfTopics = getTriggerButtonTextMapping();
+	console.table(mappingOfTopics);
+
 
 	let returnArray = [];
 
@@ -27,8 +28,8 @@ export default function Chatbox() {
 	console.log(getMessageBlock('greeting'));
 	returnArray.push(renderQuestionAnswerBlock(getMessageBlock('greeting')));
 	returnArray.push(renderQuestionAnswerBlock(getMessageBlock('workExperience')));
-	returnArray.push(<QuestionButton key={uid()} text={"Experience"}/>);
-	returnArray.push(<QuestionButton key={uid()} text={"Skills"}/>);
+	returnArray.push(<QuestionButton key={uid()} text={"Experience"} msgBlock={'workExperience'}/>);
+	returnArray.push(<QuestionButton key={uid()} text={"Start the chat"} msgBlock={'greeting'}/>);
 
 	return <Wrapper>{returnArray}</Wrapper>;
 }

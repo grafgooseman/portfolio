@@ -1,7 +1,8 @@
 // This file contains the messages that will be displayed in the chat
 
-const messageArray = {
+const messages = {
     greeting: {
+        triggerButtonText: 'Start',
         messages: [
             {
                 type: 'question',
@@ -27,6 +28,7 @@ const messageArray = {
         ]
     },
     technicalSkills: {
+        triggerButtonText: 'Technical skills',
         messages: [
             {
                 type: 'question',
@@ -44,6 +46,7 @@ const messageArray = {
         ]
     },
     workExperience: {
+        triggerButtonText: 'Work experience',
         messages: [
             {
                 type: 'question',
@@ -71,6 +74,7 @@ const messageArray = {
         ]
     },
     personalProjects: {
+        triggerButtonText: 'Personal projects',
         messages: [
             {
                 type: 'question',
@@ -131,6 +135,7 @@ const messageArray = {
         ]
     },
     contacts: {
+        triggerButtonText: 'Contacts',
         messages: [
             {
                 type: 'question',
@@ -157,6 +162,7 @@ const messageArray = {
         ]
     },
     goodbye: {
+        triggerButtonText: 'Goodbye',
         messages: [
             {
                 type: 'question',
@@ -392,8 +398,8 @@ const linksReferencer = {
 
 //#region exports 
 
-export default function getMessageBlock(messageBlockName){
-    return linkifyMessageArray(messageArray[messageBlockName].messages);
+export default function getMessageBlock(messageBlockName) {
+    return linkifyMessageArray(messages[messageBlockName].messages);
 }
 
 function linkifyMessageArray(arr) {
@@ -408,6 +414,13 @@ function linkifyMessageArray(arr) {
     return arr;
 };
 
-export {messageArray};
+export function getTriggerButtonTextMapping() {
+    const keys = Object.keys(messages);
+    return keys.reduce((acc, key) => {
+      acc[key] = messages[key].triggerButtonText;
+      return acc;
+    }, {});
+  }
+  
 
 //#endregion

@@ -4,7 +4,7 @@ import panelQuestionTail from '../../images/panelQuestionTail.svg';
 import panelQuestionTailBlue from '../../images/panelQuestionTailBlue.svg';
 import '../../styles/rippleAnimation.css';
 
-export default function QuestionButton({ text }) {
+export default function QuestionButton({ text, msgBlock}) {
 	let [ currentTail, setCurrentTail ] = React.useState(panelQuestionTail);
 
 	function handleEvent(event) {
