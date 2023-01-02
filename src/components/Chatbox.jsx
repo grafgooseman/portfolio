@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import QuestionButton from './chatStuff/QuestionButton';
-import getMessageBlock, { getTriggerButtonTextMapping } from './chatStuff/messages';
+import getMessageBlock, { getTriggerButtonTextMappings } from './chatStuff/messages';
 
 //#endregion
 
@@ -13,43 +13,46 @@ const paddingArray = [ 13, 16 ];
 
 export default function Chatbox() {
 	const [ returnArray, setReturnArray ] = useState([]);
-	const mappingOfTopics = getTriggerButtonTextMapping();
-	const usedmappings = [];
+	const mappingOfTopics = getTriggerButtonTextMappings();
+	const usedMappings = [];
+	let isAwaitsReply = false;
 
 	useEffect(() => {
+		if(isAwaitsReply === false){
 		renderQuestionButtons();
+		}
 	}, []);
 
 	//#region JSX functions
 
 	function renderQuestionButtons() {
-		if (usedmappings.length === 0) {
+		if (usedMappings.length === 0) {
 			returnArray.push(<QuestionButton text={mappingOfTopics.greeting} callBack={questionButtonPressed} key={uid()} />);
 		} else {
-			for (const key in mappingOfTopics) {
+			for (let i = 1; i < Object.keys(mappingOfTopics).length; i++) {
+				const key = Object.keys(mappingOfTopics)[i];
 				if (mappingOfTopics.hasOwnProperty(key)) {
 					const element = mappingOfTopics[key];
-					if (!usedmappings.includes(element)) {
-						returnArray.push(<QuestionButton key={uid()} text={element} />);
+					if (!usedMappings.includes(element)) {
+						returnArray.push(<QuestionButton key={uid()} callBack={questionButtonPressed} text={element} />);
 					}
 				}
 			}
 		}
 		console.log(returnArray);
 		setReturnArray([...returnArray]);
+		isAwaitsReply = true;
 	}
 
 	function questionButtonPressed(btnText) {
 		const msgSection = Object.entries(mappingOfTopics).find((entry) => entry[1] === btnText)[0];
-		console.log(msgSection);
-		setReturnArray([ 
-			...returnArray, 
-			renderQuestionAnswerBlock(getMessageBlock(msgSection)),
-			renderQuestionButtons()
-		]);
+		usedMappings.push(msgSection);
+
 		returnArray.push(renderQuestionAnswerBlock(getMessageBlock(msgSection)));
 		returnArray.push(renderQuestionButtons());
-		usedmappings.push(btnText);
+
+		setReturnArray([...returnArray]);
+		console.table(usedMappings);
 		console.log(returnArray);
 	}
 

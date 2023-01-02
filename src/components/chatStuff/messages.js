@@ -414,13 +414,13 @@ function linkifyMessageArray(arr) {
     return arr;
 };
 
-export function getTriggerButtonTextMapping() {
+export function getTriggerButtonTextMappings() {
     const keys = Object.keys(messages);
     return keys.reduce((acc, key) => {
       acc[key] = messages[key].triggerButtonText;
       return acc;
     }, {});
-  }
+}
   
 
 //#endregion
