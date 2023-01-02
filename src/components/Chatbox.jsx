@@ -1,63 +1,89 @@
 //#region Imports
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uid } from 'uuid';
 import styled from 'styled-components';
 import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import QuestionButton from './chatStuff/QuestionButton';
-import getMessageBlock, {getTriggerButtonTextMapping} from './chatStuff/messages';
+import getMessageBlock, { getTriggerButtonTextMapping } from './chatStuff/messages';
 
 //#endregion
 
 const paddingArray = [ 13, 16 ];
 
 export default function Chatbox() {
-	
-	// Renders 2 times, because React, should be OK though
-	// Can only be a problem if API call is made
-	// Or counter is used. Reference: https://upmostly.com/tutorials/why-is-my-useeffect-hook-running-twice-in-react#:~:text=React%20expects%20your%20functions%20to,cause%20the%20same%20result%20twice.
-
+	const [ returnArray, setReturnArray ] = useState([]);
 	const mappingOfTopics = getTriggerButtonTextMapping();
-	console.table(mappingOfTopics);
+	const usedmappings = [];
 
+	useEffect(() => {
+		renderQuestionButtons();
+	}, []);
 
-	let returnArray = [];
+	//#region JSX functions
+
+	function renderQuestionButtons() {
+		if (usedmappings.length === 0) {
+			returnArray.push(<QuestionButton text={mappingOfTopics.greeting} callBack={questionButtonPressed} key={uid()} />);
+		} else {
+			for (const key in mappingOfTopics) {
+				if (mappingOfTopics.hasOwnProperty(key)) {
+					const element = mappingOfTopics[key];
+					if (!usedmappings.includes(element)) {
+						returnArray.push(<QuestionButton key={uid()} text={element} />);
+					}
+				}
+			}
+		}
+		console.log(returnArray);
+		setReturnArray([...returnArray]);
+	}
+
+	function questionButtonPressed(btnText) {
+		const msgSection = Object.entries(mappingOfTopics).find((entry) => entry[1] === btnText)[0];
+		console.log(msgSection);
+		setReturnArray([ 
+			...returnArray, 
+			renderQuestionAnswerBlock(getMessageBlock(msgSection)),
+			renderQuestionButtons()
+		]);
+		returnArray.push(renderQuestionAnswerBlock(getMessageBlock(msgSection)));
+		returnArray.push(renderQuestionButtons());
+		usedmappings.push(btnText);
+		console.log(returnArray);
+	}
+
+	function renderQuestionAnswerBlock(messagesArray) {
+	
+		let previousType = 'question';
+		for (let i = 0; i < messagesArray.length; i++) {
+			if (messagesArray[i].type !== previousType) {
+				returnArray.push(<Spacer key={uid()} />);
+			}
+			if (messagesArray[i].type === 'reply') {
+				returnArray.push(<ReplyBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
+				previousType = 'reply';
+			} else if (messagesArray[i].type === 'question') {
+				returnArray.push(<QuestionBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
+				previousType = 'question';
+			}
+		}
+		returnArray.push(<Spacer key={uid()} />);
+		setReturnArray(returnArray);
+	}
+	
+
+	//#endregion
 
 	//Now the return array is just one of the questions answers.
 	//A new system must be implemented here
-	console.log(getMessageBlock('greeting'));
-	returnArray.push(renderQuestionAnswerBlock(getMessageBlock('greeting')));
-	returnArray.push(renderQuestionAnswerBlock(getMessageBlock('workExperience')));
-	returnArray.push(<QuestionButton key={uid()} text={"Experience"} msgBlock={'workExperience'}/>);
-	returnArray.push(<QuestionButton key={uid()} text={"Start the chat"} msgBlock={'greeting'}/>);
+	// returnArray.push(renderQuestionAnswerBlock(getMessageBlock('greeting')));
+	// returnArray.push(renderQuestionAnswerBlock(getMessageBlock('workExperience')));
+	// returnArray.push(<QuestionButton key={uid()} text={"Experience"} msgBlock={'workExperience'}/>);
+	// returnArray.push(<QuestionButton key={uid()} text={"Start the chat"} msgBlock={'greeting'}/>);
 
 	return <Wrapper>{returnArray}</Wrapper>;
 }
-
-//#region Functions
-function renderQuestionAnswerBlock(messagesArray) {
-	const returnArray = [];
-
-	let previousType = 'question';
-	for (let i = 0; i < messagesArray.length; i++) {
-		if (messagesArray[i].type !== previousType) {
-			returnArray.push(<Spacer key={uid()} />);
-		}
-		if (messagesArray[i].type === 'reply') {
-			returnArray.push(<ReplyBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
-			previousType = 'reply';
-		} else if (messagesArray[i].type === 'question') {
-			returnArray.push(<QuestionBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
-			previousType = 'question';
-		}
-	}
-	returnArray.push(<Spacer key={uid()} />);
-
-	console.log(returnArray);
-	return returnArray;
-}
-
-//#endregion
 
 //#region CSS Functions
 
@@ -100,8 +126,10 @@ const Wrapper = styled.div`
 	padding: ${intToStringWithPx(CHAT_PADDING_SMALL)};
 	width: calc(100% - ${intToStringWithPx(CHAT_PADDING_SMALL) * 2});
 	height: calc(
-		/* if $ is on a different line it will yell at me  */
-		100% - ${intToStringWithPx(addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ]))}
+		100% -
+			${intToStringWithPx(
+				addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ])
+			)}
 	);
 
 	@media (min-width: ${PADDING_BREAKPOINT}) {

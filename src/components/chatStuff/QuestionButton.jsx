@@ -4,7 +4,7 @@ import panelQuestionTail from '../../images/panelQuestionTail.svg';
 import panelQuestionTailBlue from '../../images/panelQuestionTailBlue.svg';
 import '../../styles/rippleAnimation.css';
 
-export default function QuestionButton({ text, msgBlock}) {
+export default function QuestionButton({ text, callBack}) {
 	let [ currentTail, setCurrentTail ] = React.useState(panelQuestionTail);
 
 	function handleEvent(event) {
@@ -16,14 +16,13 @@ export default function QuestionButton({ text, msgBlock}) {
 		}
 	}
 
-	// function handleClickEvent(event) {
-	// 	console.log(event);
-	// 	setCurrentTail(panelQuestionTailBlue);
-	// }
+	function handleClickEvent(event) {
+		callBack(text);
+	}
 
 	return (
 		<Wrapper>
-			<MiddleWrapper onMouseDown={handleEvent} onMouseUp={handleEvent}>
+			<MiddleWrapper onClick={handleClickEvent} onMouseDown={handleEvent} onMouseUp={handleEvent}>
 				<Bubble>
 					<p>{text}</p>
 					<img src={currentTail} alt="" />

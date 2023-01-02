@@ -2,7 +2,7 @@
 
 const messages = {
     greeting: {
-        triggerButtonText: 'Start',
+        triggerButtonText: 'Start the chat',
         messages: [
             {
                 type: 'question',
