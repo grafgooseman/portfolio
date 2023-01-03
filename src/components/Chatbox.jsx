@@ -10,6 +10,8 @@ import getMessageBlock, { getTriggerButtonTextMappings } from './chatStuff/messa
 //#endregion
 
 const paddingArray = [ 13, 16 ];
+const replyDelay = 1700;
+const questionDelay = 800;
 
 export default function Chatbox() {
 	const [ returnArray, setReturnArray ] = useState([]);
@@ -18,72 +20,90 @@ export default function Chatbox() {
 	let isAwaitsReply = false;
 
 	useEffect(() => {
-		if(isAwaitsReply === false){
-		renderQuestionButtons();
+		if (isAwaitsReply === false) {
+			renderQuestionButtons();
 		}
 	}, []);
 
 	//#region JSX functions
 
-	function renderQuestionButtons() {
+	function renderQuestionButtons(dontSetArray) {
+		const localArr = [];
+
 		if (usedMappings.length === 0) {
-			returnArray.push(<QuestionButton text={mappingOfTopics.greeting} callBack={questionButtonPressed} key={uid()} />);
+			localArr.push(
+				<QuestionButton text={mappingOfTopics.greeting} callBack={questionButtonPressed} key={'btn-' + uid()} />
+			);
 		} else {
 			for (let i = 1; i < Object.keys(mappingOfTopics).length; i++) {
 				const key = Object.keys(mappingOfTopics)[i];
 				if (mappingOfTopics.hasOwnProperty(key)) {
 					const element = mappingOfTopics[key];
 					if (!usedMappings.includes(element)) {
-						returnArray.push(<QuestionButton key={uid()} callBack={questionButtonPressed} text={element} />);
+						localArr.push(
+							<QuestionButton key={'btn-' + uid()} callBack={questionButtonPressed} text={element} />
+						);
 					}
 				}
 			}
 		}
+		if (!dontSetArray) {
+			setReturnArray([ ...returnArray, ...localArr ]);
+		}
 		console.log(returnArray);
-		setReturnArray([...returnArray]);
 		isAwaitsReply = true;
+		return localArr;
 	}
 
-	function questionButtonPressed(btnText) {
+	async function questionButtonPressed(btnText) {
 		const msgSection = Object.entries(mappingOfTopics).find((entry) => entry[1] === btnText)[0];
-		usedMappings.push(msgSection);
+		usedMappings.push(btnText);
 
-		returnArray.push(renderQuestionAnswerBlock(getMessageBlock(msgSection)));
-		returnArray.push(renderQuestionButtons());
-
-		setReturnArray([...returnArray]);
-		console.table(usedMappings);
-		console.log(returnArray);
+		const localArr = [];
+		localArr.push(await renderQuestionAnswerBlock(getMessageBlock(msgSection)));
+		setReturnArray([ ...returnArray, ...localArr ]);
+		
+		pergeOldButtons();
 	}
 
-	function renderQuestionAnswerBlock(messagesArray) {
-	
+	async function renderQuestionAnswerBlock(messagesArray) {
+		// const localArr = [];
+
 		let previousType = 'question';
 		for (let i = 0; i < messagesArray.length; i++) {
 			if (messagesArray[i].type !== previousType) {
 				returnArray.push(<Spacer key={uid()} />);
 			}
 			if (messagesArray[i].type === 'reply') {
-				returnArray.push(<ReplyBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
+				returnArray.push(
+					<ReplyBubble key={'message-' + uid()} paddingArray={paddingArray} text={messagesArray[i].text} />
+				);
 				previousType = 'reply';
+				await delayedElementRender(replyDelay);
 			} else if (messagesArray[i].type === 'question') {
-				returnArray.push(<QuestionBubble key={uid()} paddingArray={paddingArray} text={messagesArray[i].text} />);
+				returnArray.push(
+					<QuestionBubble key={'message-' + uid()} paddingArray={paddingArray} text={messagesArray[i].text} />
+				);
 				previousType = 'question';
+				await delayedElementRender(questionDelay);
 			}
 		}
 		returnArray.push(<Spacer key={uid()} />);
 		setReturnArray(returnArray);
+		// setReturnArray([...returnArray, ...localArr]); //why this doesnt work idk
 	}
-	
+
+	function pergeOldButtons() {
+		const filteredArray = returnArray.filter((element) => element && element.key.includes('btn-') === false);
+		setReturnArray([ ...filteredArray, renderQuestionButtons() ]);
+	}
+
+	async function delayedElementRender(delay) {
+		await new Promise((resolve) => setTimeout(resolve, delay));
+		setReturnArray([...returnArray]);
+	}
 
 	//#endregion
-
-	//Now the return array is just one of the questions answers.
-	//A new system must be implemented here
-	// returnArray.push(renderQuestionAnswerBlock(getMessageBlock('greeting')));
-	// returnArray.push(renderQuestionAnswerBlock(getMessageBlock('workExperience')));
-	// returnArray.push(<QuestionButton key={uid()} text={"Experience"} msgBlock={'workExperience'}/>);
-	// returnArray.push(<QuestionButton key={uid()} text={"Start the chat"} msgBlock={'greeting'}/>);
 
 	return <Wrapper>{returnArray}</Wrapper>;
 }

@@ -7,7 +7,7 @@ import DOMPurify from 'dompurify';
 
 export default function ReplyBubble({ text, paddingArray }) {
 	
-	const typingAnimationLength = 2500;
+	const typingAnimationLength = 1500;
 	const [renderTypingAnimation, setRenderTypingAnimation] = React.useState(true);
 
 	useEffect(() => {
