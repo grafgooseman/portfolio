@@ -6,6 +6,7 @@ import ReplyBubble from './chatStuff/ReplyBubble';
 import QuestionBubble from './chatStuff/QuestionBubble';
 import QuestionButton from './chatStuff/QuestionButton';
 import getMessageBlock, { getTriggerButtonTextMappings } from './chatStuff/messages';
+import againBtnImg from '../images/again.svg';
 
 //#endregion
 
@@ -17,7 +18,7 @@ export default function Chatbox() {
 	const ChatboxRef = useRef();
 	const [ returnArray, setReturnArray ] = useState([]);
 	const mappingOfTopics = getTriggerButtonTextMappings();
-	const usedMappings = [];
+	let usedMappings = [];
 	let isAwaitsReply = false;
 	let isInitialRender = true;
 
@@ -44,8 +45,6 @@ export default function Chatbox() {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				setReturnArray((returnArray) => [ ...returnArray, element ]);
-				console.log('---returnArray---');
-				console.log(returnArray);
 				const chatbox = ChatboxRef.current;
 				const paddingTop = parseInt(getComputedStyle(chatbox).paddingTop, 10);
 				const paddingBottom = parseInt(getComputedStyle(chatbox).paddingBottom, 10);
@@ -54,7 +53,7 @@ export default function Chatbox() {
 					chatbox.scrollHeight - chatbox.clientHeight - scrollbarHeight + paddingTop + paddingBottom;
 
 				// TODO: scroll to bottom including padding (current implementation doesnt scroll all the way to the bottom)
-				
+
 				chatbox.scrollTo({
 					top: targetPosition,
 					behavior: 'smooth'
@@ -66,6 +65,7 @@ export default function Chatbox() {
 	}
 
 	async function renderQuestionButtons() {
+		
 		if (usedMappings.length === 0) {
 			isInitialRender = false;
 			await renderElement(
@@ -86,16 +86,31 @@ export default function Chatbox() {
 					if (!usedMappings.includes(element)) {
 						let delay = 0;
 						if (firstElement) {
+
+							await renderElement(<Spacer key={uid()} />, 0);
 							delay = replyDelay + 100;
 							firstElement = false;
 						} else {
 							delay = 0;
 						}
-
-						await renderElement(
-							<QuestionButton text={element} callBack={questionButtonPressed} key={'btn-' + uid()} />,
-							delay
-						);
+						console.log(mappingOfTopics);
+						console.log(mappingOfTopics["greeting"]);
+						console.log(usedMappings);
+						//check if there is no more elements to render
+						if (usedMappings.includes(element)) {
+							await renderElement(
+								<AgainBtn onClick={resetChat}>
+									<div>
+										<img id="againImg" src={againBtnImg} alt="Chat again" />
+									</div>
+								</AgainBtn>
+							);
+						} else {
+							await renderElement(
+								<QuestionButton text={element} callBack={questionButtonPressed} key={'btn-' + uid()} />,
+								delay
+							);
+						}
 					}
 				}
 			}
@@ -107,13 +122,9 @@ export default function Chatbox() {
 		const msgSection = Object.entries(mappingOfTopics).find((entry) => entry[1] === btnText)[0];
 		usedMappings.push(btnText);
 
-		//TODO: Add new elemnt to copyRetunArray
-		// returnArrayCopy = returnArray.slice();
-
 		pergeOldButtons();
 		renderQuestionAnswerBlock(getMessageBlock(msgSection));
 	}
-
 
 	async function renderQuestionAnswerBlock(messagesArray) {
 		let previousType = 'question';
@@ -153,12 +164,20 @@ export default function Chatbox() {
 
 	function pergeOldButtons() {
 		console.log('purgeOldButtons');
-		// console.log(returnArrayCopy);
-		console.log(returnArrayCopyRef.current);
-		console.log(returnArrayCopyRef.current.map((element) => element.key.includes('btn-')));
-		const filteredArray = returnArrayCopyRef.current.filter((element) => element && element.key.includes('btn-') === false);
+		const filteredArray = returnArrayCopyRef.current.filter(
+			(element) => element && element.key.includes('btn-') === false
+		);
 		console.log(filteredArray);
-		setReturnArray([ ...filteredArray]);
+		setReturnArray([ ...filteredArray ]);
+	}
+
+	function resetChat() {
+		document.getElementById('againImg').style.transform = 'rotate(-360deg)';
+		setTimeout(() => {
+			usedMappings = [];
+			setReturnArray([]);
+			renderQuestionAnswerBlock(getMessageBlock('greeting'));
+		}, 300);
 	}
 
 	//#endregion
@@ -234,4 +253,41 @@ const Wrapper = styled.div`
 
 const Spacer = styled.div`min-height: 15px;`;
 
+const AgainBtn = styled.button`
+	background: none;
+	border: none;
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+
+	&:focus {
+		outline: none;
+	}
+
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80px;
+		border-radius: 100%;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	}
+
+	img {
+		transform-origin: center;
+
+		&:hover {
+			transform: rotate(-35deg);
+		}
+
+		transition: transform 0.3s ease;
+		width: 100%;
+		border-radius: 100%;
+	}
+`;
 //#endregion
