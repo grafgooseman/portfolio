@@ -33,6 +33,15 @@ export default function Chatbox() {
 	useEffect(
 		() => {
 			returnArrayCopyRef.current = returnArray;
+
+			// Find the last child element of the chatbox
+			const chatbox = ChatboxRef.current;
+			const lastChild = chatbox.lastElementChild;
+
+			if (lastChild) {
+				// Scroll the last child element into view smoothly
+				lastChild.scrollIntoView({ behavior: 'smooth' });
+			}
 		},
 		[ returnArray ]
 	);
@@ -40,32 +49,15 @@ export default function Chatbox() {
 	//#region JSX functions
 
 	async function renderElement(element, delay) {
-		// returnArrayCopy.push(element)
-		// returnArrayCopy = returnArray.slice();
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				setReturnArray((returnArray) => [ ...returnArray, element ]);
-				const chatbox = ChatboxRef.current;
-				const paddingTop = parseInt(getComputedStyle(chatbox).paddingTop, 10);
-				const paddingBottom = parseInt(getComputedStyle(chatbox).paddingBottom, 10);
-				const scrollbarHeight = chatbox.offsetHeight - chatbox.clientHeight;
-				const targetPosition =
-					chatbox.scrollHeight - chatbox.clientHeight - scrollbarHeight + paddingTop + paddingBottom;
-
-				// TODO: scroll to bottom including padding (current implementation doesnt scroll all the way to the bottom)
-
-				chatbox.scrollTo({
-					top: targetPosition,
-					behavior: 'smooth'
-				});
-
 				resolve();
 			}, delay);
 		});
 	}
 
 	async function renderQuestionButtons() {
-		
 		if (usedMappings.length === 0) {
 			isInitialRender = false;
 			await renderElement(
@@ -78,34 +70,34 @@ export default function Chatbox() {
 			);
 		} else {
 			let firstElement = true;
-			for (let i = 1; i < Object.keys(mappingOfTopics).length; i++) {
-				const key = Object.keys(mappingOfTopics)[i];
-				if (mappingOfTopics.hasOwnProperty(key)) {
-					const element = mappingOfTopics[key];
 
-					if (!usedMappings.includes(element)) {
-						let delay = 0;
-						if (firstElement) {
+			if (usedMappings.includes(mappingOfTopics.goodbye)) {
+				await renderElement(
+					<AgainBtn key={'againBtn-' + uid()} onClick={resetChat}>
+						<div>
+							<img id="againImg" src={againBtnImg} alt="Chat again" />
+						</div>
+					</AgainBtn>,
+					replyDelay
+				);
+			} else {
+				for (let i = 1; i < Object.keys(mappingOfTopics).length; i++) {
+					const key = Object.keys(mappingOfTopics)[i];
+					if (mappingOfTopics.hasOwnProperty(key)) {
+						const element = mappingOfTopics[key];
 
-							await renderElement(<Spacer key={uid()} />, 0);
-							delay = replyDelay + 100;
-							firstElement = false;
-						} else {
-							delay = 0;
-						}
-						console.log(mappingOfTopics);
-						console.log(mappingOfTopics["greeting"]);
-						console.log(usedMappings);
-						//check if there is no more elements to render
-						if (usedMappings.includes(element)) {
-							await renderElement(
-								<AgainBtn onClick={resetChat}>
-									<div>
-										<img id="againImg" src={againBtnImg} alt="Chat again" />
-									</div>
-								</AgainBtn>
-							);
-						} else {
+						if (!usedMappings.includes(element)) {
+							let delay = 0;
+							if (firstElement) {
+								await renderElement(<Spacer key={uid()} />, 0);
+								delay = replyDelay + 100;
+								firstElement = false;
+							} else {
+								delay = 0;
+							}
+
+							//check if there is no more elements to render
+
 							await renderElement(
 								<QuestionButton text={element} callBack={questionButtonPressed} key={'btn-' + uid()} />,
 								delay
@@ -163,18 +155,17 @@ export default function Chatbox() {
 	}
 
 	function pergeOldButtons() {
-		console.log('purgeOldButtons');
 		const filteredArray = returnArrayCopyRef.current.filter(
 			(element) => element && element.key.includes('btn-') === false
 		);
-		console.log(filteredArray);
+
 		setReturnArray([ ...filteredArray ]);
 	}
 
 	function resetChat() {
 		document.getElementById('againImg').style.transform = 'rotate(-360deg)';
 		setTimeout(() => {
-			usedMappings = [];
+			usedMappings = [ mappingOfTopics.greeting ];
 			setReturnArray([]);
 			renderQuestionAnswerBlock(getMessageBlock('greeting'));
 		}, 300);
