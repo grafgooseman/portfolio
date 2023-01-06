@@ -19,11 +19,11 @@ const messages = {
             {
                 type: 'reply',
                 text:
-                    'Love coding, engineering and flying ✈️ Have excellent interpersonal skills and am constantly interested in new technologies.',
+                    'Love coding, engineering and building stuff 🏗️ Have excellent interpersonal skills and am constantly interested in new technologies.',
             },
             {
                 type: 'reply',
-                text: 'For example, right now learning Web3 on the side.',
+                text: 'For example, right now learning on-chain development on the side.',
             }
         ]
     },
@@ -50,7 +50,7 @@ const messages = {
         messages: [
             {
                 type: 'question',
-                text: 'Good, thanks. And work experience?',
+                text: 'Good, thanks. Any work experience?',
             },
             {
                 type: 'reply',
@@ -69,7 +69,12 @@ const messages = {
             },
             {
                 type: 'reply',
-                text: 'I had other positions but these are the most relevant',
+                text:
+                    'I had two coops with SIRT. They invited me back after the first one.'
+            },
+            {
+                type: 'reply',
+                text: 'There were other positions but these are the most relevant',
             },
         ]
     },

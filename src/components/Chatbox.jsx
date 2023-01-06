@@ -217,8 +217,7 @@ const Wrapper = styled.div`
 	padding: ${intToStringWithPx(CHAT_PADDING_SMALL)};
 	width: calc(100% - ${intToStringWithPx(CHAT_PADDING_SMALL) * 2});
 	height: calc(
-		100% -
-			${intToStringWithPx(
+		100% - ${intToStringWithPx(
 				addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ])
 			)}
 	);
@@ -226,8 +225,7 @@ const Wrapper = styled.div`
 	@media (min-width: ${PADDING_BREAKPOINT}) {
 		padding: ${intToStringWithPx(CHAT_PADDING)};
 		width: calc(100% - ${intToStringWithPx(CHAT_PADDING) * 2});
-		height: calc(
-			100% - ${intToStringWithPx(addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING, CHAT_PADDING ]))}
+		height: calc(100% - ${intToStringWithPx(addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING, CHAT_PADDING ]))}
 		);
 	}
 
