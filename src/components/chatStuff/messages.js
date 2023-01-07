@@ -19,7 +19,7 @@ const messages = {
             {
                 type: 'reply',
                 text:
-                    'Love coding, engineering and building stuff 🏗️. Have excellent interpersonal skills and constantly interested in new technologies.',
+                    'Love coding, engineering and 🏗️ building stuff. Have excellent interpersonal skills and constantly interested in new technologies.',
             },
             {
                 type: 'reply',
