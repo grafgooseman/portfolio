@@ -73,7 +73,7 @@ export default function Chatbox() {
 
 			if (usedMappings.includes(mappingOfTopics.goodbye)) {
 				await renderElement(
-					<AgainBtn key={'againBtn-' + uid()} onClick={resetChat}>
+					<AgainBtn id="resetButton" key={'againBtn-' + uid()} onClick={resetChat}>
 						<div>
 							<img id="againImg" src={againBtnImg} alt="Chat again" />
 						</div>
@@ -162,12 +162,20 @@ export default function Chatbox() {
 		setReturnArray([ ...filteredArray ]);
 	}
 
+	//Flag to avoid multiple calls of the function (just disabling button is not reliable)
+	let isResetChatRunning = false;
 	function resetChat() {
+		if (isResetChatRunning) {
+			return;
+		}
+		isResetChatRunning = true;
+
 		document.getElementById('againImg').style.transform = 'rotate(-360deg)';
 		setTimeout(() => {
 			usedMappings = [ mappingOfTopics.greeting ];
 			setReturnArray([]);
 			renderQuestionAnswerBlock(getMessageBlock('greeting'));
+			isResetChatRunning = false;
 		}, 300);
 	}
 
@@ -217,7 +225,8 @@ const Wrapper = styled.div`
 	padding: ${intToStringWithPx(CHAT_PADDING_SMALL)};
 	width: calc(100% - ${intToStringWithPx(CHAT_PADDING_SMALL) * 2});
 	height: calc(
-		100% - ${intToStringWithPx(
+		100% -
+			${intToStringWithPx(
 				addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING_SMALL, CHAT_PADDING_SMALL ])
 			)}
 	);
@@ -225,7 +234,8 @@ const Wrapper = styled.div`
 	@media (min-width: ${PADDING_BREAKPOINT}) {
 		padding: ${intToStringWithPx(CHAT_PADDING)};
 		width: calc(100% - ${intToStringWithPx(CHAT_PADDING) * 2});
-		height: calc(100% - ${intToStringWithPx(addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING, CHAT_PADDING ]))}
+		height: calc(
+			100% - ${intToStringWithPx(addAllElementsInArray([ WINDOW_HEADER_HEIGHT, CHAT_PADDING, CHAT_PADDING ]))}
 		);
 	}
 
