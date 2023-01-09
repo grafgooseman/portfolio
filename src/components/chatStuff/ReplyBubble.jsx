@@ -6,22 +6,22 @@ import TypingAnimationBubble from './TypingAnimationBubble';
 import DOMPurify from 'dompurify';
 
 export default function ReplyBubble({ text, paddingArray }) {
-	
 	const typingAnimationLength = 1500;
-	const [renderTypingAnimation, setRenderTypingAnimation] = React.useState(true);
+	const [ renderTypingAnimation, setRenderTypingAnimation ] = React.useState(true);
 
 	useEffect(() => {
 		setTimeout(() => {
 			setRenderTypingAnimation(false);
-			addTargetBlankAndRelBack();
+			setTimeout(() => {
+				addTargetBlankAndRelBack();
+			}, 100);
 		}, typingAnimationLength);
 	}, []);
 
-
-	if(renderTypingAnimation){
+	if (renderTypingAnimation) {
 		return (
 			<Wrapper>
-				<TypingAnimationBubble/>
+				<TypingAnimationBubble />
 			</Wrapper>
 		);
 	} else {
@@ -36,22 +36,23 @@ export default function ReplyBubble({ text, paddingArray }) {
 	}
 }
 
-//#region Functions 
-
-
+//#region Functions
 
 function addTargetBlankAndRelBack() {
 	const links = document.querySelectorAll('.content a');
 	links.forEach((link) => {
-		link.setAttribute('target', '_blank');
-		link.setAttribute('rel', 'noopener noreferrer');
+		if (!link.hasAttribute('target')) {
+			link.setAttribute('target', '_blank');
+		}
+		if (!link.hasAttribute('rel')) {
+			link.setAttribute('rel', 'noopener noreferrer');
+		}
 	});
 }
 
 //#endregion
 
-
-//#region Styles 
+//#region Styles
 
 const PADDING_BREAKPOINT = '632px';
 
