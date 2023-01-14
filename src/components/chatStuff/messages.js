@@ -2,7 +2,7 @@
 
 const messages = {
     greeting: {
-        triggerButtonText: 'Start the chat',
+        triggerButtonText: 'Click here to start',
         messages: [
             {
                 type: 'question',
@@ -14,7 +14,7 @@ const messages = {
             },
             {
                 type: 'reply',
-                text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College.',
+                text: 'Yes, absolutely! In short, I am a Software Development student at Sheridan College with already 1+ years of experience in the field.',
             },
             {
                 type: 'reply',
@@ -131,7 +131,7 @@ const messages = {
             {
                 type: 'reply',
                 text:
-                    'This website could also be considered as a React practice project '
+                    'This website you are on right now is my React practice project. Everything here is custom-made'
             },
             {
                 type: 'reply',
@@ -157,13 +157,7 @@ const messages = {
                     '$$LinkedIn$$, ' +
                     ' in addition I can be reached via emal: <br>' +
                     '$$SheridanMail$$'
-            },
-            {
-                type: 'reply',
-                text:
-                    'And this is my general ' +
-                    '$$Resume$$'
-            },
+            }
         ]
     },
     goodbye: {
@@ -396,7 +390,7 @@ const linksReferencer = {
     },
     Resume: {
         text: "Resume",
-        url: "https://docs.google.com/document/d/1s42rtLqTcQHcgdMoueHmS7KIjvMR01FV/edit?usp=sharing&ouid=100985831291466163407&rtpof=true&sd=true"
+        url: "https://www.linkedin.com/in/gusev-artem/"
     }
 }
 
