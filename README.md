@@ -1,6 +1,6 @@
 # ✨ My website portfolio
 
-In the near future, I am planning to update it to an entire AI chat application 🤖
+Website that showcases that I did recently
 
 [Link](https://grafgooseman.github.io/portfolio/)
 
