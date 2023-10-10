@@ -6,7 +6,7 @@ const messages = {
         messages: [
             {
                 type: 'question',
-                text: 'Hello Artem, I heard that you are looking for a coop placement for the summer 2023, right?',
+                text: 'Hello Artem, I heard that you are looking for a job right?',
             },
             {
                 type: 'question',
@@ -56,7 +56,7 @@ const messages = {
                 type: 'reply',
                 text:
                     "I had an internship at :Root where I did " +
-                    'a very complex paid chrome extension to help people buy exclusive sneakers.<br><br>' +
+                    'a very complex paid chrome extension to help people buy exclusive items.<br><br>' +
                     "Extention was an instant success and the company's sales skyrocketed that month 🚀",
             },
             {
@@ -74,7 +74,7 @@ const messages = {
             },
             {
                 type: 'reply',
-                text: 'There were other positions but these are the most relevant',
+                text: 'My most recent position was as a Machine Learning Data Analyst at CMI. I was developing a short-term bone fracture prediction algorithm in collaboration with Osteoporosis Canada.',
             },
         ]
     },
