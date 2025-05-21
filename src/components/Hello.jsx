@@ -8,7 +8,7 @@ export default function Hello() {
 			<HelloTextHolder>
 				<h1>Hello</h1>
 				<h3>My name is Artem Gusev</h3>
-				<p>I am a student with computer science passion</p>
+				<p>Engineer at heart. Developer by craft. Results by default.</p>
 			</HelloTextHolder>
 			<LaptopHolder>
 				<Laptop src={laptopImg} alt="laptop" />
