@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.5d96ef69.css",
-    "main.js": "/portfolio/static/js/main.6549d1f2.js",
-    "static/media/stars.jpg": "/portfolio/static/media/stars.38d83403de2cfc30feac.jpg",
-    "static/media/laptop.png": "/portfolio/static/media/laptop.db5b2bebc762b2bbbae5.png",
-    "index.html": "/portfolio/index.html",
-    "static/media/again.svg": "/portfolio/static/media/again.42a56894369a867c01aa87ed516d8ff7.svg",
-    "static/media/replyBubbleTail.svg": "/portfolio/static/media/replyBubbleTail.4a4e359fc7dd51c9b55eaf5439864c08.svg",
-    "static/media/questionBubbleTail.svg": "/portfolio/static/media/questionBubbleTail.2de3fe40002422890b4b226d834bdba7.svg",
-    "static/media/panelQuestionTailBlue.svg": "/portfolio/static/media/panelQuestionTailBlue.eb14fde82cab8f7a93ce8575c579ac38.svg",
-    "static/media/panelQuestionTail.svg": "/portfolio/static/media/panelQuestionTail.9c8d917e9eb82625013b1d8697b05a72.svg",
-    "static/media/scrollDown.svg": "/portfolio/static/media/scrollDown.6d0434d01391314109698c374d08ed35.svg",
-    "main.5d96ef69.css.map": "/portfolio/static/css/main.5d96ef69.css.map",
-    "main.6549d1f2.js.map": "/portfolio/static/js/main.6549d1f2.js.map"
+    "main.css": "/static/css/main.5d96ef69.css",
+    "main.js": "/static/js/main.44285a4b.js",
+    "static/media/stars.jpg": "/static/media/stars.38d83403de2cfc30feac.jpg",
+    "static/media/laptop.png": "/static/media/laptop.db5b2bebc762b2bbbae5.png",
+    "index.html": "/index.html",
+    "static/media/again.svg": "/static/media/again.42a56894369a867c01aa87ed516d8ff7.svg",
+    "static/media/replyBubbleTail.svg": "/static/media/replyBubbleTail.4a4e359fc7dd51c9b55eaf5439864c08.svg",
+    "static/media/questionBubbleTail.svg": "/static/media/questionBubbleTail.2de3fe40002422890b4b226d834bdba7.svg",
+    "static/media/panelQuestionTailBlue.svg": "/static/media/panelQuestionTailBlue.eb14fde82cab8f7a93ce8575c579ac38.svg",
+    "static/media/panelQuestionTail.svg": "/static/media/panelQuestionTail.9c8d917e9eb82625013b1d8697b05a72.svg",
+    "static/media/scrollDown.svg": "/static/media/scrollDown.6d0434d01391314109698c374d08ed35.svg",
+    "main.5d96ef69.css.map": "/static/css/main.5d96ef69.css.map",
+    "main.44285a4b.js.map": "/static/js/main.44285a4b.js.map"
   },
   "entrypoints": [
     "static/css/main.5d96ef69.css",
-    "static/js/main.6549d1f2.js"
+    "static/js/main.44285a4b.js"
   ]
 }
