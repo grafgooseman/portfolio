@@ -2,5 +2,5 @@
 
 Website that showcases that I did recently
 
-[Link](https://grafgooseman.github.io/portfolio/)
+[Link](https://gusev.studio)
 
